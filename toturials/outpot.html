@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+</head>
+
+<body>
+    <button onclick="clearConsole()">Clear console</button>
+    <script>
+        console.log('text-1', 'text-2', 'text-3'); //Writes information to the browser console
+
+        console.error('error-1', 'error-2', 'error-3'); //Writes error information to the browser console
+
+        console.warn('warning-1', 'warning-2', 'warning-3'); //Writes a warning message to the console
+
+        console.info('info-1', 'info-2', 'info-3'); //Writes an informational message to the console
+
+        console.table([{ name: 'Alice', age: 25 }, { name: 'Bob', age: 30 }]); //Displays tabular data as a table in the console
+
+        console.debug('debug-1', 'debug-2', 'debug-3'); //Writes a debug-level message to the console. It's similar to console.log but may be used to indicate lower-priority information
+
+        console.group('Group 1'); //console.group() and console.groupEnd(): Groups related messages together in the console.
+        console.log('Inside group 1');
+        console.groupEnd();
+
+        alert('alert message') // Output data in an alert box in the browser window
+
+        if (confirm('Choose Ok or Cancel')) {  // confirm() Opens up a yes/no dialog and returns 'true' if select 'OK' and 'false' if select 'Cancel'
+            console.log('Selected OK');
+        } else {
+            console.log('Selected Cancel');
+        }
+
+        document.write('text') //Write directly to the HTML document
+
+        const inputText = prompt('enter any text', 'It is placeholder') //Creates a dialogue for user input
+        console.log('input test:', inputText);
+
+        function clearConsole(){
+            console.clear(); //Clears the console
+        }
+
+    </script>
+</body>
+
+</html>

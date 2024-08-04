@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Declaring variables in the global scope
+        var globalVar = "I am a global variable"; // Function-scoped or globally-scoped
+        let globalLet = "I am also a global variable"; // Block-scoped
+        const globalConst = "I am a constant global variable"; // Block-scoped and constant
+
+        function demoFunction() {
+            // Variables in function scope
+            var functionVar = "I am a function-scoped variable";
+
+            if (true) {
+                // Variables in block scope
+                let blockLet = "I am a block-scoped variable";
+                // let blockLet = "I am a block-scoped variable"; //Error: Cannot redeclare block-scoped variable 'blockLet'
+                const blockConst = "I am a block-scoped constant";
+
+                // Reassignment
+                blockLet = "I can be reassigned";
+                // blockConst = "I cannot be reassigned"; // This will throw an error
+
+                console.log(blockLet); // Outputs: "I can be reassigned"
+                console.log(blockConst); // Outputs: "I am a block-scoped constant"
+            }
+
+            // console.log(blockLet); // ReferenceError: blockLet is not defined
+            // console.log(blockConst); // ReferenceError: blockConst is not defined
+
+            // Hoisting: functionVar is hoisted to the top of the function scope
+            console.log(functionVar); // Outputs: undefined
+            var functionVar = "I am still a function-scoped variable";
+
+            // Redeclaration
+            var functionVar = "I can be redeclared with var";
+            // let functionVar = "I cannot be redeclared with let"; // SyntaxError: Identifier 'functionVar' has already been declared
+
+            console.log(functionVar); // Outputs: "I can be redeclared with var"
+        }
+
+        demoFunction();
+
+        // Hoisting in global scope
+        console.log(hoistedVar); // Outputs: undefined
+        var hoistedVar = "I am hoisted in the global scope";
+
+        // Redeclaration in global scope
+        var hoistedVar = "I can be redeclared in the global scope";
+        console.log(hoistedVar); // Outputs: "I can be redeclared in the global scope"
+
+        hoistedVar = "Value can be changed in the global scope";
+        console.log(hoistedVar); // Outputs: "Value can be changed in the global scope"
+
+        // console.log(globalLet); // Outputs: "I am also a global variable"
+        // let globalLet = "This will cause an error"; // SyntaxError: Identifier 'globalLet' has already been declared
+
+        // Best practice: Use const by default
+        const bestPracticeConst = "I should be used unless reassignment is needed";
+        // bestPracticeConst = "This will cause an error"; // TypeError: Assignment to constant variable.
+
+        console.log(globalVar); // Outputs: "I am a global variable"
+        console.log(globalLet); // Outputs: "I am also a global variable"
+        console.log(globalConst); // Outputs: "I am a constant global variable"
+        console.log(bestPracticeConst); // Outputs: "I should be used unless reassignment is needed"
+
+    </script>
+</body>
+
+</html>
