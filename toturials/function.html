@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+
+<body>
+    <script>
+        // Function declaration
+        function add(a, b) {
+            return a + b;
+        }
+        console.log(add(2, 3)); // Outputs: 5
+
+        // Function expression
+        let subtract = function (a, b) {
+            return a - b;
+        };
+        console.log(subtract(5, 2)); // Outputs: 3
+
+        // Arrow function
+        let multiply = (a, b) => a + b;
+        console.log(multiply(2, 3)); // Outputs: 6
+
+        // Function Constructor
+        const addTwoNumber = new Function('a', 'b', 'return a + b;');
+        console.log(addTwoNumber(2, 3)); // Outputs: 5
+
+        // Function Properties and Methods
+        function example(a, b) { }
+        console.log(example.name); // Outputs: "example"
+        console.log(example.length); // Outputs: 2 (number of expected arguments)
+        console.log(example.toString()); // Outputs the function's source code as a string
+
+
+        // IIFE
+        (function () {
+            console.log('This function runs immediately!');
+        })(); // Outputs: This function runs immediately!
+        (() => {
+            console.log("This is an IIFE using an arrow function!");
+        })(); // Outputs: This is an IIFE using an arrow function!
+
+        // Default parameters
+        function divide(a, b = 1) {
+            return a / b;
+        }
+        console.log(divide(6)); // Outputs: 6 (b defaults to 1)
+        console.log(divide(6, 2)); // Outputs: 3
+
+        // Rest parameters
+        function sum(...numbers) {
+            console.log(numbers); // Output: [1, 2, 3, 4]
+
+        }
+        console.log(sum(1, 2, 3, 4)); // Outputs: 10
+
+        // Arguments object (non-arrow functions)
+        function showArguments() {
+            console.log(arguments); // the word 'arguments' refers to a special array-like object available within all non-arrow functions in JavaScript. This object contains the values of the arguments passed to the function.
+        }
+        showArguments(1, 2, 3); // Outputs: [Arguments] { '0': 1, '1': 2, '2': 3 }
+
+        // Scope and closures
+        function outerFunction(outerVariable) {
+            return function innerFunction(innerVariable) { //Return inner function
+                console.log(`Outer variable: ${outerVariable}`);
+                console.log(`Inner variable: ${innerVariable}`);
+            };
+        }
+        let closureFunction = outerFunction('outside'); // Here calling outer function which returning inner function, which means closureFunction variavle itself becaming a inner function
+        closureFunction('inside'); // Calling inner function
+        // Outputs:
+        // Outer variable: outside
+        // Inner variable: inside
+
+        // Function hoisting
+        console.log(hoistedFunction()); // Outputs: I am hoisted!
+        function hoistedFunction() {
+            return 'I am hoisted!';
+        }
+        // console.log(notHoistedFunction()); // Error: notHoistedFunction is not defined
+        let notHoistedFunction = function () {
+            return 'I am not hoisted!';
+        };
+
+        // this Binding
+        let person = {
+            name: 'Alice',
+            regularFunction: function () {
+                console.log(this.name); // `this` refers to the person object
+                let arrowFunction = () => {
+                    console.log("Arrow function this:", this); // `this` refers to the `person` object
+                    console.log(this.name); // Outputs: Alice
+                };
+                arrowFunction();
+            },
+            arrowFunction: () => {
+                console.log(this.name); // `this` retains the value from the enclosing context, in this case undefined
+            }
+        };
+        person.regularFunction(); // Outputs: Alice
+        person.arrowFunction(); // Outputs: undefined (or the value of `this.name` in the outer context)
+
+        // Higher-Order Function
+        function higherOrderFunction(callback) {
+            callback();
+        }
+        higherOrderFunction(function () {
+            console.log('This is a callback function');
+        });
+
+        // Call, Apply, and Bind Methods
+        function myFunction1() {
+            console.log(this);
+        }
+
+        // Using call: Setting the `this` context to 1 and ignoring additional arguments
+        myFunction1.call(1, 2, 3); // Outputs: 1
+
+        // Using call: Setting the `this` context to the array [1, 2, 3]
+        myFunction1.call([1, 2, 3]); // Outputs: [1, 2, 3]
+
+        // Using apply: Setting the `this` context to the array [1, 2, 3]
+        myFunction1.apply([1, 2, 3]); // Outputs: [1, 2, 3]
+
+        // Using bind: Creating a new function with the `this` context set to the array [1, 2, 3]
+        const boundFunction1 = myFunction1.bind([1, 2, 3]);
+        boundFunction1(); // Outputs: [1, 2, 3]
+
+        function myFunction2(a, b, c) {
+            console.log(a, b, c);
+        }
+
+        // Using call: Passing arguments individually (this is ignored)
+        myFunction2.call(1, 2, 3); // Outputs: 2 3 undefined (because the function expects three arguments, but only two are passed correctly, `c` is undefined)
+
+        // Using call: Passing the array as the first argument (this is ignored)
+        myFunction2.call([1, 2, 3]); // Outputs: [1, 2, 3] undefined undefined (the array is passed as the first argument, `b` and `c` are undefined)
+
+        // Using apply: Passing the array as arguments
+        myFunction2.apply(null, [1, 2, 3]); // Outputs: 1 2 3 (arguments are spread correctly)
+
+        // Using bind: Creating a new function with arguments preset
+        const boundFunction2 = myFunction2.bind(null, 1, 2, 3);
+        boundFunction2(); // Outputs: 1 2 3
+
+        function myFunction3(b, c) {
+            console.log(this, b, c);
+        }
+
+        // Using call: Setting the `this` context to 1 and passing 2 and 3 as arguments
+        myFunction3.call(1, 2, 3); // Outputs: 1 2 3
+
+        // Using call: Setting the `this` context to the array [1, 2, 3], and no additional arguments
+        myFunction3.call([1, 2, 3]); // Outputs: [1, 2, 3] undefined undefined
+
+        // Using apply: Setting the `this` context to the array [1, 2, 3], and no additional arguments
+        myFunction3.apply([1, 2, 3]); // Outputs: [1, 2, 3] undefined undefined
+
+        // Using bind: Creating a new function with the `this` context set to 1 and arguments preset
+        const boundFunction3 = myFunction3.bind(1, 2, 3);
+        boundFunction3(); // Outputs: 1 2 3
+
+
+        // Define a generator function
+        function* numberGenerator() {
+            console.log('Start generator');
+
+            yield 1; // Pauses execution and returns 1
+            console.log('Resumed after yielding 1');
+
+            yield 2; // Pauses execution and returns 2
+            console.log('Resumed after yielding 2');
+
+            yield 3; // Pauses execution and returns 3
+            console.log('Resumed after yielding 3');
+
+            return 'Done'; // Ends the generator and returns 'Done'
+        }
+
+        // Create a generator object
+        const gen = numberGenerator();
+
+        console.log(gen.next()); // { value: 1, done: false }
+        // Outputs: Start generator
+        // { value: 1, done: false }
+
+        console.log(gen.next()); // { value: 2, done: false }
+        // Outputs: Resumed after yielding 1
+        // { value: 2, done: false }
+
+        console.log(gen.next()); // { value: 3, done: false }
+        // Outputs: Resumed after yielding 2
+        // { value: 3, done: false }
+
+        console.log(gen.next()); // { value: 'Done', done: true }
+        // Outputs: Resumed after yielding 3
+        // { value: 'Done', done: true }
+
+        console.log(gen.next()); // { value: undefined, done: true }
+        // { value: undefined, done: true }
+
+        // Define an async function
+        async function fetchData(url) {
+            try {
+                // Use await to pause execution until the fetch promise is resolved
+                let response = await fetch(url);
+
+                // Check if the response is ok (status in the range 200-299)
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                // Parse the response as JSON
+                let data = await response.json();
+
+                // Return the data
+                return data;
+            } catch (error) {
+                // Handle any errors that occurred during the fetch or parsing
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+
+        // Call the async function and handle the returned promise
+        fetchData('https://freetestapi.com/api/v1/animals')
+            .then(data => {
+                // Do something with the data
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the fetchData call
+                console.error('Error fetching data:', error);
+            });
+
+    </script>
+</body>
+
+</html>

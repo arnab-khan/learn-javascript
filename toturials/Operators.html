@@ -9,80 +9,97 @@
 
 <body>
     <script>
-    // Arithmetic Operators
-    let a = 10;
-    let b = 5;
+        // Arithmetic Operators
+        let a = 10;
+        let b = 5;
 
-    console.log(a + b); // Addition: Outputs: 15
-    console.log(a - b); // Subtraction: Outputs: 5
-    console.log(a * b); // Multiplication: Outputs: 50
-    console.log(a / b); // Division: Outputs: 2
-    console.log(a % b); // Modulus: Outputs: 0 (remainder of a divided by b)
-    console.log(a ** b); // Exponentiation: Outputs: 100000 (10 raised to the power of 5)
+        console.log(a + b); // Addition: Outputs: 15
+        console.log(a - b); // Subtraction: Outputs: 5
+        console.log(a * b); // Multiplication: Outputs: 50
+        console.log(a / b); // Division: Outputs: 2
+        console.log(a % b); // Modulus: Outputs: 0 (remainder of a divided by b)
+        console.log(a ** b); // Exponentiation: Outputs: 100000 (10 raised to the power of 5)
 
-    // Assignment Operators
-    let x = 10;
-    x += 5; // Equivalent to x = x + 5; x is now 15
-    console.log(x); // Outputs: 15
+        // Assignment Operators
+        let x = 10;
+        x += 5; // Equivalent to x = x + 5; x is now 15
+        console.log(x); // Outputs: 15
 
-    // Comparison Operators
-    console.log(a == b); // Equality: Outputs: false (checks if a is equal to b)
-    console.log(a != b); // Inequality: Outputs: true (checks if a is not equal to b)
-    console.log(a > b); // Greater than: Outputs: true (checks if a is greater than b)
-    console.log(a < b); // Less than: Outputs: false (checks if a is less than b)
-    console.log(a >= b); // Greater than or equal to: Outputs: true
-    console.log(a <= b); // Less than or equal to: Outputs: false
+        //shift operator
+        let c = 5; // Binary: 00000000000000000000000000000101
+        let r1 = c << 2; // Shift left by 2 positions: 00000000000000000000000000010100
+        console.log(r1); // Outputs: 20
 
-    // Logical Operators
-    let isTrue = true;
-    let isFalse = false;
+        let d = -20; // Binary: 11111111111111111111111111101100 (two's complement form)
+        let r2 = d >> 2; // Shift right by 2 positions: 11111111111111111111111111111011
+        console.log(r2); // Outputs: -5
 
-    console.log(isTrue && isFalse); // Logical AND: Outputs: false (true AND false is false)
-    console.log(isTrue || isFalse); // Logical OR: Outputs: true (true OR false is true)
-    console.log(!isTrue); // Logical NOT: Outputs: false (NOT true is false)
+        let e = -20; // Binary: 11111111111111111111111111101100 (two's complement form)
+        let r3 = e >>> 2; // Zero-fill right shift: Shift right by 2 positions: 00111111111111111111111111111011
+        console.log(r3); // Outputs: 1073741819
 
-    // String Operators
-    let str1 = "Hello";
-    let str2 = "World";
+        // Comparison Operators
+        console.log(a == b); // Equality: Outputs: false (checks if a is equal to b)
+        console.log(a != b); // Inequality: Outputs: true (checks if a is not equal to b)
+        console.log(a > b); // Greater than: Outputs: true (checks if a is greater than b)
+        console.log(a < b); // Less than: Outputs: false (checks if a is less than b)
+        console.log(a >= b); // Greater than or equal to: Outputs: true
+        console.log(a <= b); // Less than or equal to: Outputs: false
+        a++;
+        console.log(a); // output increase one (11)
+        b--;
+        console.log(b); // output decrease one (4)
 
-    console.log(str1 + " " + str2); // Concatenation: Outputs: "Hello World"
+        // Logical Operators
+        let isTrue = true;
+        let isFalse = false;
 
-    // Unary Operators
-    let num = 10;
-    console.log(+num); // Unary plus: Outputs: 10 (converts to a number, but num is already a number)
-    console.log(-num); // Unary minus: Outputs: -10 (negates the value)
+        console.log(isTrue && isFalse); // Logical AND: Outputs: false (true AND false is false)
+        console.log(isTrue || isFalse); // Logical OR: Outputs: true (true OR false is true)
+        console.log(!isTrue); // Logical NOT: Outputs: false (NOT true is false)
 
-    // Ternary Operator
-    let age = 20;
-    let canVote = age >= 18 ? "Yes" : "No"; // Conditional (ternary) operator
-    console.log(canVote); // Outputs: "Yes"
+        // String Operators
+        let str1 = "Hello";
+        let str2 = "World";
 
-    // Typeof Operator
-    console.log(typeof a); // Outputs: "number" (returns the type of the variable a)
-    console.log(typeof str1); // Outputs: "string" (returns the type of the variable str1)
+        console.log(str1 + " " + str2); // Concatenation: Outputs: "Hello World"
 
-    // Instanceof Operator
-    console.log([1, 2, 3] instanceof Array); // Outputs: true (checks if [1, 2, 3] is an instance of Array)
+        // Unary Operators
+        let num = 10;
+        console.log(+num); // Unary plus: Outputs: 10 (converts to a number, but num is already a number)
+        console.log(-num); // Unary minus: Outputs: -10 (negates the value)
 
-    // Nullish Coalescing Operator
-    let userInput = null;
-    let defaultValue = "Default Value";
+        // Ternary Operator
+        let age = 20;
+        let canVote = age >= 18 ? "Yes" : "No"; // Conditional (ternary) operator
+        console.log(canVote); // Outputs: "Yes"
 
-    let result = userInput ?? defaultValue;
-    console.log(result); // Outputs: "Default Value" (userInput is null)
+        // Typeof Operator
+        console.log(typeof a); // Outputs: "number" (returns the type of the variable a)
+        console.log(typeof str1); // Outputs: "string" (returns the type of the variable str1)
 
-    userInput = "User Input";
-    result = userInput ?? defaultValue;
-    console.log(result); // Outputs: "User Input" (userInput is not null or undefined)
+        // Instanceof Operator
+        console.log([1, 2, 3] instanceof Array); // Outputs: true (checks if [1, 2, 3] is an instance of Array)
 
-    let zero = 0;
-    let anotherResult = zero ?? 42;
-    console.log(anotherResult); // Outputs: 0 (zero is not null or undefined)
+        // Nullish Coalescing Operator
+        let userInput = null;
+        let defaultValue = "Default Value";
 
-    let notDefined;
-    let fallback = "Fallback Value";
-    let finalResult = notDefined ?? fallback;
-    console.log(finalResult); // Outputs: "Fallback Value" (notDefined is undefined)
+        let result = userInput ?? defaultValue;
+        console.log(result); // Outputs: "Default Value" (userInput is null)
+
+        userInput = "User Input";
+        result = userInput ?? defaultValue;
+        console.log(result); // Outputs: "User Input" (userInput is not null or undefined)
+
+        let zero = 0;
+        let anotherResult = zero ?? 42;
+        console.log(anotherResult); // Outputs: 0 (zero is not null or undefined)
+
+        let notDefined;
+        let fallback = "Fallback Value";
+        let finalResult = notDefined ?? fallback;
+        console.log(finalResult); // Outputs: "Fallback Value" (notDefined is undefined)
 
     </script>
 </body>

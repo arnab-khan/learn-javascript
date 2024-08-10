@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data type</title>
+</head>
+
+<body>
+    <script>
+        // String: Represents text
+        let greeting = "Hello, world!";
+        console.log(greeting); // Outputs: Hello, world!
+
+        // Number: Represents both integer and floating-point numbers
+        let age = 25;
+        let pi = 3.14;
+        console.log(age); // Outputs: 25
+        console.log(pi); // Outputs: 3.14
+
+        // BigInt: Represents integers with arbitrary precision
+        let bigNumber = 1234567890123456789012345678901234567890n;
+        console.log(bigNumber); // Outputs: 1234567890123456789012345678901234567890n
+
+        // Boolean: Represents a logical entity and can be true or false
+        let isJavaScriptFun = true;
+        console.log(isJavaScriptFun); // Outputs: true
+
+        // Undefined: A variable that has been declared but not assigned a value
+        let notAssigned;
+        console.log(notAssigned); // Outputs: undefined
+
+        // Null: Represents the intentional absence of any object value
+        let emptyValue = null;
+        console.log(emptyValue); // Outputs: null
+
+        // Symbol: A unique and immutable primitive value
+        let uniqueId = Symbol('id');
+        console.log(uniqueId); // Outputs: Symbol(id)
+
+        // Object: A collection of key-value pairs
+        let person = {
+            name: "John",
+            age: 30,
+            isEmployed: true
+        };
+        console.log(person); // Outputs: { name: 'John', age: 30, isEmployed: true }
+
+
+
+        // =============== some operation ===============
+
+        // Concatenation of different types
+        let y = "Volvo" + 16 + 4;
+        // Explanation:
+        // - "Volvo" is a string.
+        // - 16 is a number.
+        // - 4 is also a number.
+        // When the `+` operator is used with strings, JavaScript converts the other operands to strings and concatenates them.
+        // So, "Volvo" + 16 results in "Volvo16", and then "Volvo16" + 4 results in "Volvo164".
+        console.log(y); // Outputs: Volvo164
+
+        // Variable declaration and assignment
+        let z;       // Now x is undefined
+        // Explanation:
+        // - `z` is declared but not initialized, so its value is `undefined`.
+        console.log(z); // Outputs: undefined
+
+        z = 5;       // Now z is a Number
+        // Explanation:
+        // - `z` is assigned the value `5`, so its type is now `Number`.
+        console.log(z); // Outputs: 5
+
+        z = "John";  // Now z is a String
+        // Explanation:
+        // - `z` is reassigned the value `"John"`, so its type is now `String`.
+        console.log(z); // Outputs: John
+
+        // String + null
+        let result1 = "Hello" + null;
+        // Explanation:
+        // - "Hello" is a string.
+        // - `null` is converted to the string "null" when concatenated.
+        // So, "Hello" + null results in "Hellonull".
+        console.log(result1); // Outputs: Hellonull
+
+        // String + undefined
+        let result2 = "Hello" + undefined;
+        // Explanation:
+        // - "Hello" is a string.
+        // - `undefined` is converted to the string "undefined" when concatenated.
+        // So, "Hello" + undefined results in "Helloundefined".
+        console.log(result2); // Outputs: Helloundefined
+
+        // String + boolean
+        let result3 = "Hello" + true;
+        // Explanation:
+        // - "Hello" is a string.
+        // - `true` is converted to the string "true" when concatenated.
+        // So, "Hello" + true results in "Hellotrue".
+        console.log(result3); // Outputs: Hellotrue
+
+
+        // =============== find type ===============
+    let number = 42;
+    console.log(typeof number); // Outputs: "number"
+
+    let text = "Hello";
+    console.log(typeof text); // Outputs: "string"
+
+    let isActive = true;
+    console.log(typeof isActive); // Outputs: "boolean"
+
+    let big = 1234567890123456789012345678901234567890n;
+    console.log(typeof big); // Outputs: "bigint"
+
+    let obj = { name: "Alice", age: 30 };
+    console.log(typeof obj); // Outputs: "object"
+
+    let func = function () { };
+    console.log(typeof func); // Outputs: "function"
+
+    let und;
+    console.log(typeof und); // Outputs: "undefined"
+
+    let empty = null;
+    console.log(typeof empty); // Outputs: "object" (historical bug in JavaScript)
+
+    let sym = Symbol('description');
+    console.log(typeof sym); // Outputs: "symbol"
+
+
+    </script>
+</body>
+
+</html>
