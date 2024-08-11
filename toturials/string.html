@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Declaring Strings
+        let str1 = "Hello, World!"; // Double quotes
+        let str2 = 'JavaScript is fun'; // Single quotes
+        let str3 = `This is a string with a template literal`; // Backticks for template literals
+        console.log("str1:", str1); // Output: str1: Hello, World!
+        console.log("str2:", str2); // Output: str2: JavaScript is fun
+        console.log("str3:", str3); // Output: str3: This is a string with a template literal
+
+        // Accessing Characters
+        let firstChar = str1[0]; // Access the first character: 'H'
+        let lastChar = str1[str1.length - 1]; // Access the last character: '!'
+        console.log("First character of str1:", firstChar); // Output: First character of str1: H
+        console.log("Last character of str1:", lastChar); // Output: Last character of str1: !
+
+        // String Length
+        let lengthOfStr1 = str1.length; // Length of the string: 13
+        console.log("Length of str1:", lengthOfStr1); // Output: Length of str1: 13
+
+        // Handling Multi-Byte Characters
+        let emoji = "😊";
+        console.log(emoji.length); // Output: 2 (because it's represented by two code units)
+        console.log(emoji.codePointAt(0)); // Output: 128522 (correct Unicode code point)
+
+        // Concatenation
+        let combinedStr = str1 + " " + str2; // Combines both strings with a space: "Hello, World! JavaScript is fun"
+        console.log("Combined string:", combinedStr); // Output: Combined string: Hello, World! JavaScript is fun
+
+        // Template Literals (with interpolation)
+        let name = "Alice";
+        let greeting = `Hello, ${name}!`; // Inserts the value of `name` into the string: "Hello, Alice!"
+        console.log("Greeting with template literal:", greeting); // Output: Greeting with template literal: Hello, Alice!
+        let item = "apples";
+        let count = 5;
+        let message = `${count} ${item} cost $${(count * 0.5).toFixed(2)} total.`; // Output: "5 apples cost $2.50 total."
+        console.log("Message using template literal:", message);
+        let originalStr = "Hello";
+        let anotherStr = ", World!"
+        let modifiedStr = originalStr.concat(anotherStr); // Creates a new string
+        console.log("Original string:", originalStr); // Output: "Hello"
+        console.log("Modified string:", modifiedStr); // Output: "Hello, World!"
+
+
+        // String Methods
+        let upperStr = str2.toUpperCase(); // Converts to uppercase: 'JAVASCRIPT IS FUN'
+        console.log("Uppercase str2:", upperStr); // Output: Uppercase str2: JAVASCRIPT IS FUN
+
+        let lowerStr = str1.toLowerCase(); // Converts to lowercase: 'hello, world!'
+        console.log("Lowercase str1:", lowerStr); // Output: Lowercase str1: hello, world!
+
+        let substringStr = str1.substring(0, 5); // Extracts characters from index 0 to 4: 'Hello'
+        console.log("Substring of str1:", substringStr); // Output: Substring of str1: Hello
+
+        let sliceStr = str1.slice(7, 12); // Extracts characters from index 7 to 11: 'World'
+        console.log("Sliced part of str1:", sliceStr); // Output: Sliced part of str1: World
+
+        let substrStr = str1.substr(0, 3); //substr(from: number, length?: number) // Extracts characters from index 7 to 9: 'Hel'
+        console.log("Substr of str1:", substrStr); // Output: Substring of str1: Hello
+
+        let text1 = "The rain in Spain falls mainly in the plain.";
+        let replacedStr = text1.replace('ain', 'xxx'); // Replaces first 'ain' with 'xxx'
+        console.log("Replaced string:", replacedStr); // Output: Replaced string: The rxxx in Spain falls mainly in the plain.
+        let text2 = "The rain in Spain falls mainly in the plain.";
+        let replacedText = text2.replace(/ain/g, "XXX"); // The rXXX in SpXXX falls mXXXly in the plXXX.
+        console.log("Replaced 'ain' with 'XXX':", replacedText); // Output: Replaced 'ain' with 'XXX': The rXXX in SpXXX falls mXXXly in the plXXX.
+        let text3 = "The rain in Spain falls mainly in the plain.";
+        let replacedTextAll = text3.replaceAll('ain', "XXX"); // The rXXX in SpXXX falls mXXXly in the plXXX.
+        console.log("Replaced 'ain' with 'XXX':", replacedTextAll); // Output: Replaced 'ain' with 'XXX': The rXXX in SpXXX falls mXXXly in the plXXX.
+
+        let includesCheck = str2.includes('fun'); // Checks if 'fun' is in str2: true
+        console.log("Does str2 include 'fun'?", includesCheck); // Output: Does str2 include 'fun'?: true
+
+        let text = "The rain in Spain falls mainly in the plain.";
+        let result = text.match('ain'); // Output: ['ain', index: 5, input: 'The rain in Spain falls mainly in the plain.', groups: undefined], means first ain present 5th position
+        let pattern = /ain/g; // Global search for "ain"
+        console.log("Matching 'ain' in text:", result);
+        let resultGlobal = text.match(pattern); // Output: ['ain', 'ain', 'ain', 'ain'], means ain present 4 times inside string
+        console.log("Global matching 'ain' in text:", resultGlobal);
+        let resultMatchAll = [...text.matchAll(/ain/gi)]; // 'g' for global and 'i' for case sensetive
+        console.log("MatchAll 'ain' in text:", resultMatchAll);
+        /*
+            Output:
+            [
+                ['ain', index: 5, input: 'The rain in Spain falls mainly in the plain.', groups: undefined]
+                ['ain', index: 14, input: 'The rain in Spain falls mainly in the plain.', groups: undefined]
+                ['ain', index: 25, input: 'The rain in Spain falls mainly in the plain.', groups: undefined]
+                ['ain', index: 40, input: 'The rain in Spain falls mainly in the plain.', groups: undefined]
+            ]
+        */
+
+        let paragraph = "The quick brown fox jumps over the lazy dog.";
+        // Search with regex
+        let position = paragraph.search(/fox/); // Output: 16
+        console.log("Position of 'fox':", position);
+
+        let mobile = "123-456-7890";
+        let mobilePattern = /^(\d{3})-(\d{3})-(\d{4})$/;
+        let mobilePatternResult = pattern.test(mobile); // Output: true (checks if the string matches the pattern)
+        console.log("Does the text match the phone number pattern?", mobilePatternResult); // Does the text match the phone number pattern? false
+
+        let splitStr = str3.split(' '); // Splits str3 into an array of words: ['This', 'is', 'a', 'string', 'with', 'a', 'template', 'literal']
+        console.log("Array from splitting str3:", splitStr); // Output: Array from splitting str3: ['This', 'is', 'a', 'string', 'with', 'a', 'template', 'literal']
+
+        let trimmedStr = '   Trim me   '.trim(); // Removes whitespace from both ends: 'Trim me'
+        console.log("Trimmed string:", trimmedStr); // Output: Trimmed string: Trim me
+        let paddedStr = "   Hello, World!   ";
+        let trimmedStart = paddedStr.trimStart(); // Output: "Hello, World!   "
+        let trimmedEnd = paddedStr.trimEnd(); // Output: "   Hello, World!"
+        console.log("Trimmed start:", trimmedStart, '.');
+        console.log("Trimmed end:", trimmedEnd, '.');
+
+        // String Comparison
+        let comparison = 'abc' === 'abc'; // Checks for equality: true
+        console.log("Are 'abc' and 'abc' equal?", comparison); // Output: Are 'abc' and 'abc' equal?: true
+
+        let a = "apple";
+        let b = "banana";
+        let comparisonResult1 = a.localeCompare(b); // Output: -1 (meaning 'apple' comes before 'banana')
+        let comparisonResult2 = b.localeCompare(a); // Output: 1 (meaning 'apple' comes before 'banana')
+        console.log("'apple' compared to 'banana':", comparisonResult1, comparisonResult2);
+
+
+        let comparisonIgnoreCase = 'abc'.toLowerCase() === 'ABC'.toLowerCase(); // Case-insensitive comparison: true
+        console.log("Are 'abc' and 'ABC' equal (ignore case)?", comparisonIgnoreCase); // Output: Are 'abc' and 'ABC' equal (ignore case)?: true
+
+        // Repeating Strings
+        let repeatedStr = 'Ha! '.repeat(3); // Repeats the string 3 times: 'Ha! Ha! Ha! '
+        console.log("Repeated string:", repeatedStr); // Output: Repeated string: Ha! Ha! Ha!
+
+        // Checking the Start or End of a String
+        let fileName = "document.pdf";
+        let startsWithDoc = fileName.startsWith("doc"); // if start with 'doc' then true else false
+        console.log("Does fileName start with 'doc'?", startsWithDoc); // Does fileName start with 'doc'? true
+        let endsWithPdf = fileName.endsWith(".pdf"); // if end with 'pdf' then true else false
+        console.log("Does fileName end with '.pdf'?", endsWithPdf); // Does fileName end with '.pdf'? true
+
+        // Escaping Special Characters
+        let quote = 'He said, "It\'s a beautiful day!"';
+        console.log("Escaped string:", quote); // Output: He said, "It's a beautiful day!"
+
+        let multiLineStr = "First Line\nSecond Line";
+        console.log("Multiline string with escape sequence:", multiLineStr);
+        /*Output:
+            First Line
+            Second Line
+        */
+
+        let tabTextStr = "First text\tSecond text";
+        console.log("Tab between text:", tabTextStr); //Output: Tab between text: First text	Second text
+
+        // To find the position of a substring within a string
+        let sentence = "The quick brown fox jumps over the lazy dog.";
+        let indexOfFox = sentence.indexOf("fox"); // Output: 16
+        console.log("Index of 'fox':", indexOfFox);
+        let lastIndexOfThe = sentence.lastIndexOf("the"); // Output: 31
+        console.log("Last index of 'the':", lastIndexOfThe);
+
+        // String Padding
+        let padStr = "5";
+        let paddedStrStart = padStr.padStart(4, "0"); // Output: "0005"
+        console.log("Padded at the start:", paddedStrStart);
+        let paddedStrEnd = padStr.padEnd(4, "0"); // Output: "5000"
+        console.log("Padded at the end:", paddedStrEnd);
+
+        // Loop
+        let str = "hello";
+        // Using for...of
+        for (let char of str) {
+            console.log("Character:", char); // Output: h e l l o (each on a new line)
+        }
+        // String Conversion
+        // string to array
+        let charArray = Array.from(str);
+        console.log("Array of characters:", charArray); // Output: ["h", "e", "l", "l", "o"]
+
+        // Number to string
+        let num = 123;
+        let numStr = num.toString(); // Output: "123"
+        console.log("Number as string:", numStr);
+
+        // Boolean to string
+        let booleanValue = true;
+        let boolStr = String(booleanValue); // Output: "true"
+        console.log("Boolean as string:", boolStr);
+
+        // Internationalization (i18n) and Localization (l10n):
+        let number = 123456.789;
+        let formattedNumber = number.toLocaleString('de-DE'); // German format: "123.456,789"
+        console.log("Formatted number (German):", formattedNumber);
+
+        let date = new Date();
+        let formattedDate = date.toLocaleDateString('fr-FR'); // French date format: "JJ/MM/AAAA"
+        console.log("Formatted date (French):", formattedDate);
+
+        // CharCode
+        let charFromCode = String.fromCharCode(65, 66, 67); // Creates 'ABC'
+        console.log("String from char codes:", charFromCode); // Output: "ABC"
+        let char = "𐍈"; // A character that requires more than 16 bits
+        let codePoint = char.codePointAt(0);
+        console.log("Unicode code point of char:", codePoint); // Output: 66376
+
+        // URL Encoding and Decoding
+        let url = "https://example.com/search?query=hello world&name=John Doe";
+
+        // encodeURIComponent encodes everything except: A-Z a-z 0-9 - _ . ! ~ * ' ( )
+        // Spaces become %20, & becomes %26, etc.
+        let encodedQuery = encodeURIComponent("hello world&name=John Doe");
+        console.log("Encoded query:", encodedQuery);
+        // Output: "hello%20world%26name%3DJohn%20Doe"
+        let decodedQuery = decodeURIComponent(encodedQuery);
+        console.log("Decoded query:", decodedQuery);
+        // Output: "hello world&name=John Doe"
+
+        let encodedURL = encodeURI(url);
+        console.log("Encoded URL:", encodedURL);
+        // Output: "https://example.com/search?query=hello%20world&name=John%20Doe"
+        let decodedURL = decodeURI(encodedURL);
+        console.log("Decoded URL:", decodedURL);
+        // Output: "https://example.com/search?query=hello world&name=John Doe"
+
+    </script>
+</body>
+
+</html>
