@@ -261,27 +261,59 @@
 
 
         // Preventing Changes to Objects
+        // Example 1: Object.preventExtensions
         let myObject = {
             key1: 'value1',
             key2: 'value2',
-        }
-        myObject.key3 = "value 3"; // will add new key3
-        Object.preventExtensions(myObject); //This method prevents any new properties from being added to the object obj. Existing properties can still be modified.
-        myObject.key4 = "value 4"; // will not add key 4
-        console.log(myObject); //{key1: 'value1', key2: 'value2', key3: 'value 3'}
-        myObject.key1 = "change value 1"; // key1 value will change
-        Object.freeze(myObject); // make an object completely immutable.
-        myObject.key2 = "change value 2"; // key2 value will not change
-        console.log(myObject); // {key1: 'change value 1', key2: 'value2', key3: 'value 3'}
+        };
+        // Adding a new property before calling preventExtensions
+        myObject.key3 = "value 3"; // Adds new key3
+        console.log(myObject); // {key1: 'value1', key2: 'value2', key3: 'value 3'}
+        // Prevent any new properties from being added
+        Object.preventExtensions(myObject);
+        // Trying to add a new property after preventExtensions
+        myObject.key4 = "value 4"; // Fails to add key4
+        console.log(myObject); // {key1: 'value1', key2: 'value2', key3: 'value 3'}
+        // Modifying an existing property is allowed
+        myObject.key1 = "changed value 1";
+        console.log(myObject); // {key1: 'changed value 1', key2: 'value2', key3: 'value 3'}
+
+        // Example 2: Object.freeze
+        Object.freeze(myObject);
+        // Trying to modify a property after freeze
+        myObject.key2 = "changed value 2"; // Fails to change key2
+        console.log(myObject); // {key1: 'changed value 1', key2: 'value2', key3: 'value 3'}
+
+        // Example 3: Object.seal
         let myObjectSeal = {
             key1: 'value1',
             key2: 'value2',
-        }
-        delete myObjectSeal.key1; //will remove key1
-        Object.seal(myObjectSeal); // prevent new properties from being added to an object and also makes existing properties non-configurable.
-        myObjectSeal.key2 = "change value 2"; // Allowed
-        delete myObjectSeal.key2; // Fails to remove key2
-        console.log(myObjectSeal); // {key2: 'change value 2'}
+        };
+        // Deleting a property before calling seal
+        delete myObjectSeal.key1; // Successfully deletes key1
+        console.log(myObjectSeal); // {key2: 'value2'}
+        // Sealing the object
+        Object.seal(myObjectSeal);
+        // Modifying an existing property is allowed
+        myObjectSeal.key2 = "changed value 2";
+        console.log(myObjectSeal); // {key2: 'changed value 2'}
+        // Trying to delete a property after seal
+        delete myObjectSeal.key2; // Fails to delete key2
+        console.log(myObjectSeal); // {key2: 'changed value 2'}
+
+        // Example 4: Demonstrating additional object methods
+        // Prevents re-assignment
+        const car = { type: "Fiat", model: "500", color: "white" };
+        // car = {}; // Uncommenting this line will throw an error
+        // Prevents adding object properties
+        Object.preventExtensions(car);
+        console.log(Object.isExtensible(car)); // false
+        // Prevents adding and deleting object properties
+        Object.seal(car);
+        console.log(Object.isSealed(car)); // true
+        // Prevents any changes to an object
+        Object.freeze(car);
+        console.log(Object.isFrozen(car)); // true
 
         // Getting Property Descriptors
         let myObject1 = {
@@ -594,6 +626,34 @@
         console.log('name' in proxyObject); // "Checking if property name exists" then true
         delete proxyObject.age; // "Deleting property: age"
         console.log(proxyObject.age); // "Accessing property: age" then "Property age doesn't exist"
+
+        // get and set
+        const car1 = {
+            brand: 'Tesla',
+            model: 'Model 3',
+            // Getter for carInfo
+            get carInfo() {
+                return `${this.brand} ${this.model}`;
+            }
+        };
+        // Using the getter
+        console.log(car1.carInfo); // Output: Tesla Model 3
+
+        const car2 = {
+            brand: 'Tesla',
+            model: 'Model 3',
+
+            // Setter for carInfo
+            set carInfo(info) {
+                [this.brand, this.model] = info.split(' ');
+            }
+        };
+        // Using the setter
+        car2.carInfo = 'Ford Mustang';
+        // Log brand after setting carInfo
+        console.log(car2.brand); // Output: Ford
+        // Log model after setting carInfo
+        console.log(car2.model); // Output: Mustang
 
     </script>
 </body>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+</head>
+<body>
+    <script>
+        // For
+for (let i = 0; i < 3; i++) {
+    /*
+        let i = 0; initializes the loop variable i.
+        i < 3; is the condition that must be true for the loop to continue.
+        i++ increments the loop variable after each iteration.
+    */
+    console.log('Iteration:', i); // Output: Iteration: 0, Iteration: 1, Iteration: 2
+}
+/* Output:
+    Iteration: 0
+    Iteration: 1
+    Iteration: 2
+*/
+
+// for loop with break example
+for (let i = 0; i < 5; i++) {
+    if (i === 3) {
+        console.log('Breaking at iteration:', i); // Output: Breaking at iteration: 3
+        break;
+    }
+    console.log('Iteration:', i); // Output: Iteration: 0, Iteration: 1, Iteration: 2
+}
+/* Output:
+    Iteration: 0
+    Iteration: 1
+    Iteration: 2
+    Breaking at iteration: 3
+*/
+
+// for loop with continue example
+for (let i = 0; i < 5; i++) {
+    if (i === 2) {
+        console.log('Skipping iteration:', i); // Output: Skipping iteration: 2
+        continue;
+    }
+    console.log('Iteration:', i); // Output: Iteration: 0, Iteration: 1, Iteration: 3, Iteration: 4
+}
+/* Output:
+    Iteration: 0
+    loops.html:45 Iteration: 1
+    loops.html:42 Skipping iteration: 2
+    loops.html:45 Iteration: 3
+*/
+
+// labeled break example
+outerLoop1: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            console.log('Breaking outer loop at i:', i, 'j:', j); // Output: Breaking outer loop at i: 1 j: 1
+            break outerLoop1; // Breaks the outer loop
+        }
+        console.log('i:', i, 'j:', j); // Logs each iteration before the break
+    }
+}
+// Output: i: 0 j: 0, i: 0 j: 1, i: 0 j: 2, i: 1 j: 0, Breaking outer loop at i: 1 j: 1
+
+// labeled continue example
+outerLoop2: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            console.log('Skipping iteration at i:', i, 'j:', j); // Output: Skipping iteration at i: 1 j: 1
+            continue outerLoop2; // Continues the outer loop, skipping the inner loop's remaining code
+        }
+        console.log('i:', i, 'j:', j); // Logs each iteration before the continue
+    }
+}
+// Output: i: 0 j: 0, i: 0 j: 1, i: 0 j: 2, i: 1 j: 0, Skipping iteration at i: 1 j: 1, i: 2 j: 0, i: 2 j: 1, i: 2 j: 2
+
+// while
+let j = 0; // let j = 0; initializes the loop variable j.
+while (j < 3) { // while (j < 3) is the condition for the loop to continue. If condition true then continue and if false then terminated
+    console.log('Iteration:', j); // Output: Iteration: 0, Iteration: 1, Iteration: 2
+    j++; // j++ increments j after each iteration.
+}
+/* Output:
+    Iteration: 0
+    Iteration: 1
+    Iteration: 2
+*/
+
+// do...while
+let k = 0; // let k = 0; initializes the loop variable k.
+do { // do { ... } ensures that the block of code runs at least once.
+    console.log('Iteration:', k); // Output: Iteration: 0, Iteration: 1, Iteration: 2
+    k++; // k++ increments k after each iteration.
+} while (k < 3); // while (k < 3) is the condition for continuing the loop.
+/* Output:
+    Iteration: 0
+    Iteration: 1
+    Iteration: 2
+*/
+
+// for...in loop example
+const person = { name: 'Alice', age: 25, city: 'Wonderland' };
+for (let key in person) {
+    console.log(key + ':', person[key]); 
+}
+/* Output:
+    name: Alice
+    age: 25
+    city: Wonderland
+*/
+
+// for...of
+const numbers = [1, 2, 3, 4, 5];
+for (const number of numbers) { // iterates over each value in the array.
+    console.log(number); // Output: 1, 2, 3, 4, 5
+}
+
+const greeting = 'Hello';
+for (const char of greeting) { // iterates over each character in the string.
+    console.log(char); // Output: H, e, l, l, o
+}
+
+const map = new Map();
+map.set('a', 1);
+map.set('b', 2);
+for (const [key, value] of map) {
+    console.log(key, value); // Output: a 1, b 2
+}
+
+// forEach method example
+const fruits = ['apple', 'banana', 'cherry'];
+fruits.forEach((fruit, index) => {
+    console.log('Index:', index, 'Fruit:', fruit);
+});
+/* Output:
+    Index: 0 Fruit: apple
+    Index: 1 Fruit: banana
+    Index: 2 Fruit: cherry
+*/
+    </script>
+</body>
+</html>

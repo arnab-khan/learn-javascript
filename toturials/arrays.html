@@ -1,221 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arrays</title>
 </head>
+
 <body>
     <script>
-// 1. Creating Arrays
-let arr1 = []; // Empty array
-let arr2 = [1, 2, 3]; // Array with numbers
-let arr3 = ['a', 'b', 'c']; // Array with strings
-let arr4 = [1, 'a', true, null]; // Array with mixed types
-let arr5 = new Array(5); // Array with 5 empty slots
-console.log('1. Creating Arrays:', arr1, arr2, arr3, arr4, arr5); // Creating Arrays: [] (3) [1, 2, 3] (3) ['a', 'b', 'c'] (4) [1, 'a', true, null] (5) [empty × 5]
+        // 1. Creating Arrays
+        let arr1 = []; // Empty array
+        let arr2 = [1, 2, 3]; // Array with numbers
+        let arr3 = ['a', 'b', 'c']; // Array with strings
+        let arr4 = [1, 'a', true, null]; // Array with mixed types
+        let arr5 = new Array(5); // Array with 5 empty slots
+        console.log('1. Creating Arrays:', arr1, arr2, arr3, arr4, arr5); // Creating Arrays: [] (3) [1, 2, 3] (3) ['a', 'b', 'c'] (4) [1, 'a', true, null] (5) [empty × 5]
 
-let arrOfNumbers = Array.of(7); // Creates an array with a single number
-console.log('Using Array.of():', arrOfNumbers); // Using Array.of(): [7]
+        let arrOfNumbers = Array.of(7); // Creates an array with a single number
+        console.log('Using Array.of():', arrOfNumbers); // Using Array.of(): [7]
 
-let fillArray = new Array(5).fill(0); // Creates an array with 5 elements, all 0
-console.log('Filling Arrays:', fillArray); // Filling Arrays: (5) [0, 0, 0, 0, 0]
-fillArray.fill(3, 1, 4); // Fills elements from index 1 to 3 with 3
-console.log('Filling Arrays (partial fill):', fillArray); // Filling Arrays (partial fill): (5) [0, 3, 3, 3, 0]
+        let fillArray = new Array(5).fill(0); // Creates an array with 5 elements, all 0
+        console.log('Filling Arrays:', fillArray); // Filling Arrays: (5) [0, 0, 0, 0, 0]
+        fillArray.fill(3, 1, 4); // Fills elements from index 1 to 3 with 3
+        console.log('Filling Arrays (partial fill):', fillArray); // Filling Arrays (partial fill): (5) [0, 3, 3, 3, 0]
 
-// Create a range of numbers from 1 to 5
-let range = Array.from(
-    { length: 5 }, // Create an array-like object with 5 undefined elements
-    (value, index) => { // Map each element's index to index + 1
-        return index + 1
-    }
-);
-console.log('Creating Ranges with Array.from():', range); // Creating Ranges with Array.from(): [1, 2, 3, 4, 5]
+        // Create a range of numbers from 1 to 5
+        let range = Array.from(
+            { length: 5 }, // Create an array-like object with 5 undefined elements
+            (value, index) => { // Map each element's index to index + 1
+                return index + 1
+            }
+        );
+        console.log('Creating Ranges with Array.from():', range); // Creating Ranges with Array.from(): [1, 2, 3, 4, 5]
 
-// 2. Accessing Elements
-console.log('2. Accessing Elements:', arr2[0], arr3[2], arr4[3]); // Accessing Elements: 1 c null
+        // 2. Accessing Elements
+        console.log('2. Accessing Elements:', arr2[0], arr3[2], arr4[3]); // Accessing Elements: 1 c null
 
-let items = ['a', 'b', 'c', 'd'];
-// Accessing elements using positive indices
-let firstItem = items.at(0);  // First item
-let secondItem = items.at(1); // Second item
-// Accessing elements using negative indices
-let lastItem = items.at(-1);  // Last item
-let secondLastItem = items.at(-2); // Second to last item
-console.log('Accessing with positive indices:', firstItem, secondItem);
-// Output: Accessing with positive indices: a b
-console.log('Accessing with negative indices:', lastItem, secondLastItem);
-// Output: Accessing with negative indices: d c
+        let items = ['a', 'b', 'c', 'd'];
+        // Accessing elements using positive indices
+        let firstItem = items.at(0);  // First item
+        let secondItem = items.at(1); // Second item
+        // Accessing elements using negative indices
+        let lastItem = items.at(-1);  // Last item
+        let secondLastItem = items.at(-2); // Second to last item
+        console.log('Accessing with positive indices:', firstItem, secondItem);
+        // Output: Accessing with positive indices: a b
+        console.log('Accessing with negative indices:', lastItem, secondLastItem);
+        // Output: Accessing with negative indices: d c
 
-// 3. Modifying Elements
-arr2[1] = 42; // Changing value at index 1
-console.log('3. Modifying Elements:', arr2); // Modifying Elements: (3) [1, 42, 3]
+        // 3. Modifying Elements
+        arr2[1] = 42; // Changing value at index 1
+        console.log('3. Modifying Elements:', arr2); // Modifying Elements: (3) [1, 42, 3]
 
-// 4. Array Length
-console.log('4. Array Length:', arr2.length, arr5.length); // 3 5
+        // 4. Array Length
+        console.log('4. Array Length:', arr2.length, arr5.length); // 3 5
 
-// 5. Adding Elements
-arr2.push(4); // Add to the end
-arr2.unshift(0); // Add to the beginning
-console.log('5. Adding Elements:', arr2); // Adding Elements: (5) [0, 1, 42, 3, 4]
+        // 5. Adding Elements
+        arr2.push(4); // Add to the end
+        arr2.unshift(0); // Add to the beginning
+        console.log('5. Adding Elements:', arr2); // Adding Elements: (5) [0, 1, 42, 3, 4]
 
-// 6. Removing Elements
-arr2.pop(); // Remove from the end
-arr2.shift(); // Remove from the beginning
-console.log('6. Removing Elements:', arr2); // Removing Elements: (3) [1, 42, 3]
+        // 6. Removing Elements
+        arr2.pop(); // Remove from the end
+        arr2.shift(); // Remove from the beginning
+        console.log('6. Removing Elements:', arr2); // Removing Elements: (3) [1, 42, 3]
 
-// 7. Iterating Over Arrays
-console.log('7. Iterating Over Arrays:');
-arr3.forEach((item, index) => console.log(`Index ${index}: ${item}`));
-/*
-    Iterating Over Arrays:
-    Index 0: a
-    Index 1: b
-    Index 2: c
-*/
+        // 7. Iterating Over Arrays
+        console.log('7. Iterating Over Arrays:');
+        arr3.forEach((item, index) => console.log(`Index ${index}: ${item}`));
+        /*
+            Iterating Over Arrays:
+            Index 0: a
+            Index 1: b
+            Index 2: c
+        */
 
-// 8. Array Methods
-let numbers = [5, 3, 8, 1];
-let additionalNumbers = [7, 8, 9];
+        // 8. Array Methods
+        let numbers = [5, 3, 8, 1];
+        let additionalNumbers = [7, 8, 9];
 
-// 1. Sorting
-numbers.sort((a, b) => a - b); // Sort in ascending order: 
-/*
-    If b - a is negative:This means a is greater than b, so a should come before b in descending order.
-    If b - a is zero:The order between a and b remains unchanged.
-    If b - a is positive:This means a is less than b, so b should come before a in descending order.
-*/
+        // 1. Sorting
+        numbers.sort((a, b) => a - b); // Sort in ascending order: 
+        /*
+            If b - a is negative:This means a is greater than b, so a should come before b in descending order.
+            If b - a is zero:The order between a and b remains unchanged.
+            If b - a is positive:This means a is less than b, so b should come before a in descending order.
+        */
 
-// Output: 1. Sorting: [1, 3, 5, 8]
+        // Output: 1. Sorting: [1, 3, 5, 8]
 
-// 2. Reversing
-numbers.reverse(); // Reverse the array
-console.log('2. Reversing:', numbers); 
-// Output: 2. Reversing: [8, 5, 3, 1]
+        // 2. Reversing
+        numbers.reverse(); // Reverse the array
+        console.log('2. Reversing:', numbers);
+        // Output: 2. Reversing: [8, 5, 3, 1]
 
-// 3. Slicing
-let slicedNumbers = numbers.slice(1, 3); // Get elements from index 1 to 2
-console.log('3. Slicing:', slicedNumbers); 
-// Output: 3. Slicing: [5, 3]
+        // 3. Slicing
+        let slicedNumbers = numbers.slice(1, 3); // Get elements from index 1 to 2
+        console.log('3. Slicing:', slicedNumbers);
+        // Output: 3. Slicing: [5, 3]
 
-// 4. Splicing
-numbers.splice(2, 1, 7); // Remove 1 element at index 2 and add 7
-console.log('4. Splicing:', numbers); 
-// Output: 4. Splicing: [8, 5, 7, 1]
+        // 4. Splicing
+        numbers.splice(2, 1, 7); // Remove 1 element at index 2 and add 7
+        console.log('4. Splicing:', numbers);
+        // Output: 4. Splicing: [8, 5, 7, 1]
 
-// 5. Concatenating
-let combinedNumbers = additionalNumbers.concat(numbers); // Concatenate two arrays
-console.log('5. Concatenating:', combinedNumbers); 
-// Output: 5. Concatenating: [7, 8, 9, 8, 5, 7, 1]
+        // 5. Concatenating
+        let combinedNumbers = additionalNumbers.concat(numbers); // Concatenate two arrays
+        console.log('5. Concatenating:', combinedNumbers);
+        // Output: 5. Concatenating: [7, 8, 9, 8, 5, 7, 1]
 
-// 6. Joining
-let joined = additionalNumbers.join('-'); // Join elements into a string
-console.log('6. Joining:', joined); 
-// Output: 6. Joining: 7-8-9
+        // 6. Joining
+        let joined = additionalNumbers.join('-'); // Join elements into a string
+        console.log('6. Joining:', joined);
+        // Output: 6. Joining: 7-8-9
 
-// 7. Finding Elements
-let found = numbers.find(item => item > 5); // Find first element > 5
-console.log('7. Finding Elements:', found); 
-// Output: 7. Finding Elements: 8
+        // 7. Finding Elements
+        let found = numbers.find(item => item > 5); // Find first element > 5
+        console.log('7. Finding Elements:', found);
+        // Output: 7. Finding Elements: 8
 
-// 8. Finding Index
-let index = numbers.findIndex(item => item > 5); // Find index of first element > 5
-console.log('8. Finding Index:', index); 
-// Output: 8. Finding Index: 0
-let nums = [1, 2, 3, 2, 1];
-let firstIndex = nums.indexOf(2); // Finds the first occurrence of 2
-let lastIndex = nums.lastIndexOf(2); // Finds the last occurrence of 2
-console.log('19. Using indexOf() and lastIndexOf():', firstIndex, lastIndex);
-// Output: Using indexOf() and lastIndexOf(): 1 3
+        // 8. Finding Index
+        let index = numbers.findIndex(item => item > 5); // Find index of first element > 5
+        console.log('8. Finding Index:', index);
+        // Output: 8. Finding Index: 0
+        let nums = [1, 2, 3, 2, 1];
+        let firstIndex = nums.indexOf(2); // Finds the first occurrence of 2
+        let lastIndex = nums.lastIndexOf(2); // Finds the last occurrence of 2
+        console.log('19. Using indexOf() and lastIndexOf():', firstIndex, lastIndex);
+        // Output: Using indexOf() and lastIndexOf(): 1 3
 
-// 9. Checking Condition (every)
-let allPositive = numbers.every(item => item > 0); // Check if all are positive
-console.log('9. Checking Condition (every):', allPositive); 
-// Output: 9. Checking Condition (every): true
+        // 9. Checking Condition (every)
+        let allPositive = numbers.every(item => item > 0); // Check if all are positive
+        console.log('9. Checking Condition (every):', allPositive);
+        // Output: 9. Checking Condition (every): true
 
-// 10. Checking Condition (some)
-let somePositive = numbers.some(item => item > 5); // Check if any are > 5
-console.log('10. Checking Condition (some):', somePositive); 
-// Output: 10. Checking Condition (some): true
+        // 10. Checking Condition (some)
+        let somePositive = numbers.some(item => item > 5); // Check if any are > 5
+        console.log('10. Checking Condition (some):', somePositive);
+        // Output: 10. Checking Condition (some): true
 
-// 11. Filtering
-let filtered = numbers.filter(item => item > 3); // Filter elements > 3
-console.log('11. Filtering:', filtered); 
-// Output: 11. Filtering: [8, 5, 7]
+        // 11. Filtering
+        let filtered = numbers.filter(item => item > 3); // Filter elements > 3
+        console.log('11. Filtering:', filtered);
+        // Output: 11. Filtering: [8, 5, 7]
 
-// 12. Mapping
-let mapped = numbers.map(item => item * 2); // Multiply each element by 2
-console.log('12. Mapping:', mapped); 
-// Output: 12. Mapping: [16, 10, 14, 2]
+        // 12. Mapping
+        let mapped = numbers.map(item => item * 2); // Multiply each element by 2
+        console.log('12. Mapping:', mapped);
+        // Output: 12. Mapping: [16, 10, 14, 2]
 
-// 13. Reducing
-let sum = numbers.reduce((acc, item) => acc + item, 0); // Sum all elements
-console.log('13. Reducing:', sum); 
-// Output: 13. Reducing: 21
+        // 13. Reducing
+        let sum = numbers.reduce((acc, item) => acc + item, 0); // Sum all elements
+        console.log('13. Reducing:', sum);
+        // Output: 13. Reducing: 21
 
-// 14. Flattening Arrays
-let nestedArray = [1, [2, 3], [4, [5, 6]]];
-let flatArray = nestedArray.flat(2); // Flattens nested arrays to a depth of 2
-console.log('14. Flattening Arrays:', flatArray);
-// Output: 14. Flattening Arrays: (6) [1, 2, 3, 4, 5, 6]
-console.log(nestedArray.flat(1)); // Flattens nested arrays to a depth of 2
-// Output: (5) [1, 2, 3, 4, Array(2)]
+        // 14. Flattening Arrays
+        let nestedArray = [1, [2, 3], [4, [5, 6]]];
+        let flatArray = nestedArray.flat(2); // Flattens nested arrays to a depth of 2
+        console.log('14. Flattening Arrays:', flatArray);
+        // Output: 14. Flattening Arrays: (6) [1, 2, 3, 4, 5, 6]
+        console.log(nestedArray.flat(1)); // Flattens nested arrays to a depth of 2
+        // Output: (5) [1, 2, 3, 4, Array(2)]
 
-// 15. flatMap: The flatMap() method in JavaScript combines the operations of map() and flat(). It maps each element to a new array, and then flattens the result by one level. 
-let sentences = ["Hello world", "How are you"];
-let words = sentences.flatMap(sentence => {return sentence.split(' ')}); 
-// Maps each sentence to an array of words and flattens the result
-console.log('15. Using flatMap():', words);
-// Output: 15. Using flatMap(): ['Hello', 'world', 'How', 'are', 'you']
+        // 15. flatMap: The flatMap() method in JavaScript combines the operations of map() and flat(). It maps each element to a new array, and then flattens the result by one level. 
+        let sentences = ["Hello world", "How are you"];
+        let words = sentences.flatMap(sentence => { return sentence.split(' ') });
+        // Maps each sentence to an array of words and flattens the result
+        console.log('15. Using flatMap():', words);
+        // Output: 15. Using flatMap(): ['Hello', 'world', 'How', 'are', 'you']
 
-// 16. Flattening Arrays
-let animals = ['cat', 'dog', 'bat'];
-let hasDog = animals.includes('dog'); // Checks if 'dog' is in the array
-console.log('16. Using includes():', hasDog);
-// Output: 16. Using includes(): true
+        // 16. Flattening Arrays
+        let animals = ['cat', 'dog', 'bat'];
+        let hasDog = animals.includes('dog'); // Checks if 'dog' is in the array
+        console.log('16. Using includes():', hasDog);
+        // Output: 16. Using includes(): true
 
-// 1. Array Destructuring
-let values = [8, 5, 7, 1];
-let [firstValue, secondValue, ...remainingValues] = values; // Destructuring assignment
-console.log('1. Array Destructuring:', firstValue, secondValue, remainingValues);
-// Output: 1. Array Destructuring: 8 5 [7, 1]
+        // 1. Array Destructuring
+        let values = [8, 5, 7, 1];
+        let [firstValue, secondValue, ...remainingValues] = values; // Destructuring assignment
+        console.log('1. Array Destructuring:', firstValue, secondValue, remainingValues);
+        // Output: 1. Array Destructuring: 8 5 [7, 1]
 
-// 2. Copying Arrays
-let originalArray = [3, 6, 9, 12];
-let copiedArray = [...originalArray]; // Shallow copy using spread operator
-console.log('2. Copying Arrays:', copiedArray);
-// Output: 2. Copying Arrays: [3, 6, 9, 12]
+        // 2. Copying Arrays
+        let originalArray = [3, 6, 9, 12];
+        let copiedArray = [...originalArray]; // Shallow copy using spread operator
+        console.log('2. Copying Arrays:', copiedArray);
+        // Output: 2. Copying Arrays: [3, 6, 9, 12]
 
-// 3. Checking if Variable is an Array
-let sampleArray = [2, 4, 6, 8];
-console.log('3. Checking if Array:', Array.isArray(sampleArray));
-// Output: 3. Checking if Array: true
+        // 3. Checking if Variable is an Array
+        let sampleArray = [2, 4, 6, 8];
+        console.log('3. Checking if Array:', Array.isArray(sampleArray));
+        // Output: 3. Checking if Array: true
 
-// 4. Emptying Arrays
-let data = [10, 20, 30, 40];
-data.length = 0; // Empty the array
-console.log('4. Emptying Arrays:', data);
-// Output: 4. Emptying Arrays: []
+        // 4. Emptying Arrays
+        let data = [10, 20, 30, 40];
+        data.length = 0; // Empty the array
+        console.log('4. Emptying Arrays:', data);
+        // Output: 4. Emptying Arrays: []
 
-// Converts
-let str = 'hello';
-let arrFromStr = Array.from(str); // Converts a string to an array
-console.log('Using Array.from():', arrFromStr); // Using Array.from(): (5) ['h', 'e', 'l', 'l', 'o']
+        // Converts
+        let str = 'hello';
+        let arrFromStr = Array.from(str); // Converts a string to an array
+        console.log('Using Array.from():', arrFromStr); // Using Array.from(): (5) ['h', 'e', 'l', 'l', 'o']
 
-let arrFromSet = Array.from(new Set([1, 2, 2, 3])); // Converts a Set to an array
-console.log('Using Array.from() with Set:', arrFromSet); // Using Array.from() with Set: (3) [1, 2, 3]
+        let arrFromSet = Array.from(new Set([1, 2, 2, 3])); // Converts a Set to an array
+        console.log('Using Array.from() with Set:', arrFromSet); // Using Array.from() with Set: (3) [1, 2, 3]
 
-// Removing Duplicates
-let dupArray = [1, 2, 2, 3, 4, 4];
-let uniqueArray = [...new Set(dupArray)]; // Removes duplicates
-console.log('Removing Duplicates with Set:', uniqueArray); // Removing Duplicates with Set: (4) [1, 2, 3, 4]
+        // Removing Duplicates
+        let dupArray = [1, 2, 2, 3, 4, 4];
+        let uniqueArray = [...new Set(dupArray)]; // Removes duplicates
+        console.log('Removing Duplicates with Set:', uniqueArray); // Removing Duplicates with Set: (4) [1, 2, 3, 4]
 
-// Finding the Maximum/Minimum Value
-let numArray = [1, 2, 3, 4, 5];
-let max = Math.max(...numArray); // Find the maximum value
-let min = Math.min(...numArray); // Find the minimum value
-console.log('Finding Maximum/Minimum Value:', max, min); // Finding Maximum/Minimum Value: 5 1
+        // Finding the Maximum/Minimum Value
+        let numArray = [1, 2, 3, 4, 5];
+        let max = Math.max(...numArray); // Find the maximum value
+        let min = Math.min(...numArray); // Find the minimum value
+        console.log('Finding Maximum/Minimum Value:', max, min); // Finding Maximum/Minimum Value: 5 1
 
     </script>
 </body>
+
 </html>

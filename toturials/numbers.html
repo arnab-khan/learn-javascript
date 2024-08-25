@@ -1,158 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numbers</title>
 </head>
+
 <body>
     <script>
-// Integer
-let integer = 42; // A whole number without a fractional part
-// Floating-point number
-let float = 3.14; // A number with a fractional part
+        // Integer
+        let integer = 42; // A whole number without a fractional part
+        // Floating-point number
+        let float = 3.14; // A number with a fractional part
 
-// Special Numeric Values
-// Positive Infinity
-console.log(Infinity); //Infinity
-let positiveInfinity = 1 / 0; // Division by zero gives Infinity
-console.log(positiveInfinity); // Infinity
+        // Special Numeric Values
+        // Positive Infinity
+        console.log(Infinity); //Infinity
+        let positiveInfinity = 1 / 0; // Division by zero gives Infinity
+        console.log(positiveInfinity); // Infinity
 
-// Negative Infinity
-let negativeInfinity = -1 / 0; // Negative division by zero gives -Infinity
-console.log(negativeInfinity); // -Infinity
+        // Negative Infinity
+        let negativeInfinity = -1 / 0; // Negative division by zero gives -Infinity
+        console.log(negativeInfinity); // -Infinity
 
-// NaN (Not-a-Number)
-let notANumber = Math.sqrt(-1); // Trying to get the square root of a negative number
-console.log(notANumber); // NaN
+        // NaN (Not-a-Number)
+        let notANumber = Math.sqrt(-1); // Trying to get the square root of a negative number
+        console.log(notANumber); // NaN
 
-// Number Methods
-let number = 123.456;
+        // Number Methods
+        let number = 123.456;
 
-// toFixed(): Rounds the number to a fixed number of decimal places
-let fixed = number.toFixed(2); // Returns "123.46"
-console.log(fixed);
+        // toFixed(): Rounds the number to a fixed number of decimal places
+        let fixed = number.toFixed(2); // Returns "123.46"
+        console.log(fixed);
 
-// toString(): Converts the number to a string
-let asString = number.toString(); // Returns "123.456"
-console.log(asString);
+        // toString(): Converts the number to a string
+        let asString = number.toString(); // Returns "123.456"
+        console.log(asString);
 
-// toExponential(): Converts the number to exponential notation
-let exponential = number.toExponential(2); // Returns "1.23e+2"
-console.log(exponential);
+        // toExponential(): Converts the number to exponential notation
+        let exponential = number.toExponential(2); // Returns "1.23e+2"
+        console.log(exponential);
 
-// toPrecision(): Formats the number to a specified length
-let precision = number.toPrecision(4); // Returns "123.5"
-console.log(precision);
+        // toPrecision(): Formats the number to a specified length
+        let precision = number.toPrecision(4); // Returns "123.5"
+        console.log(precision);
 
-//Number Properties
-// Maximum representable number
-let maxNumber = Number.MAX_VALUE; // Approximately 1.7976931348623157e+308
-console.log(maxNumber);
+        //Number Properties
+        // Maximum representable number
+        let maxNumber = Number.MAX_VALUE; // Approximately 1.7976931348623157e+308
+        console.log(maxNumber);
 
-// Minimum representable positive number
-let minNumber = Number.MIN_VALUE; // Approximately 5e-324
-console.log(minNumber);
+        // Minimum representable positive number
+        let minNumber = Number.MIN_VALUE; // Approximately 5e-324
+        console.log(minNumber);
 
-// Positive Infinity
-let posInfinity = Number.POSITIVE_INFINITY; // Same as Infinity
-console.log(posInfinity);
+        // Positive Infinity
+        let posInfinity = Number.POSITIVE_INFINITY; // Same as Infinity
+        console.log(posInfinity);
 
-// Negative Infinity
-let negInfinity = Number.NEGATIVE_INFINITY; // Same as -Infinity
-console.log(negInfinity);
+        // Negative Infinity
+        let negInfinity = Number.NEGATIVE_INFINITY; // Same as -Infinity
+        console.log(negInfinity);
 
-// Not-a-Number
-let notANumberVal = Number.NaN; // Same as NaN
-console.log(notANumber);
+        // Not-a-Number
+        let notANumberVal = Number.NaN; // Same as NaN
+        console.log(notANumber);
 
-// Handling Precision Issues
-let sum = 0.1 + 0.2; // Result is 0.30000000000000004, not 0.3
-console.log(sum);
+        // Handling Precision Issues
+        let sum = 0.1 + 0.2; // Result is 0.30000000000000004, not 0.3
+        console.log(sum);
 
-// Math Object
-// Rounding methods
-let rounded = Math.round(4.5); // Returns 5
-let floor = Math.floor(4.7); // Returns 4
-let ceil = Math.ceil(4.1); // Returns 5
-console.log(rounded, floor, ceil);
+        // Math Object
+        // Rounding methods
+        let rounded = Math.round(4.5); // Returns 5
+        let floor = Math.floor(4.7); // Returns 4
+        let ceil = Math.ceil(4.1); // Returns 5
+        console.log(rounded, floor, ceil);
 
-// Max and Min
-let max = Math.max(1, 2, 3); // Returns 3
-let min = Math.min(1, 2, 3); // Returns 1
-console.log(max, min);
+        // Max and Min
+        let max = Math.max(1, 2, 3); // Returns 3
+        let min = Math.min(1, 2, 3); // Returns 1
+        console.log(max, min);
 
-// Power and Square Root
-let power = Math.pow(2, 3); // Returns 8 (2^3)
-let squareRoot = Math.sqrt(16); // Returns 4
-console.log(power, squareRoot);
+        // Power and Square Root
+        let power = Math.pow(2, 3); // Returns 8 (2^3)
+        let squareRoot = Math.sqrt(16); // Returns 4
+        console.log(power, squareRoot);
 
-// Trigonometry
-let sine = Math.sin(Math.PI / 2); // Returns 1
-console.log(sine);
+        // Trigonometry
+        let sine = Math.sin(Math.PI / 2); // Returns 1
+        console.log(sine);
 
-// BigInt
-// BigInt creation
-let bigInt = 1234567890123456789012345678901234567890n; // 'n' denotes a BigInt
-console.log(bigInt); // 1234567890123456789012345678901234567890n
+        // BigInt
+        // BigInt creation
+        let bigInt = 1234567890123456789012345678901234567890n; // 'n' denotes a BigInt
+        console.log(bigInt); // 1234567890123456789012345678901234567890n
 
-// Operations with BigInt
-let bigSum = bigInt + 10n; // Adds a BigInt and another BigInt
-console.log(bigSum); // 1234567890123456789012345678901234567900n
+        // Operations with BigInt
+        let bigSum = bigInt + 10n; // Adds a BigInt and another BigInt
+        console.log(bigSum); // 1234567890123456789012345678901234567900n
 
-// Type Conversion
-let num = "5" * 2; // Automatic type conversion, returns 10 (string converted to number)
-let result = "5" + 2; // Concatenation, returns "52" (number converted to string)
-console.log(num, result);
+        // Type Conversion
+        let num = "5" * 2; // Automatic type conversion, returns 10 (string converted to number)
+        let result = "5" + 2; // Concatenation, returns "52" (number converted to string)
+        console.log(num, result);
 
-// Check numbertype
-console.log(Number.isInteger(42)); // true
-console.log(Number.isInteger(42.5)); // false
-console.log(Number.isInteger("42")); // false
+        // Check numbertype
+        console.log(Number.isInteger(42)); // true
+        console.log(Number.isInteger(42.5)); // false
+        console.log(Number.isInteger("42")); // false
 
-console.log(Number.isFinite(42)); // true
-console.log(Number.isFinite(Infinity)); // false
-console.log(Number.isFinite("42")); // false, unlike global isFinite(), no type coercion
+        console.log(Number.isFinite(42)); // true
+        console.log(Number.isFinite(Infinity)); // false
+        console.log(Number.isFinite("42")); // false, unlike global isFinite(), no type coercion
 
-console.log(Number.isNaN(NaN)); // true
+        console.log(Number.isNaN(NaN)); // true
 
-// Number Constructor with Different Bases
-let binaryNumber = parseInt("1010", 2); // Parses as binary, returns 10
-let octalNumber = parseInt("12", 8); // Parses as octal, returns 10
-let hexNumber = parseInt("A", 16); // Parses as hexadecimal, returns 10
-console.log(binaryNumber, octalNumber, hexNumber);
+        // Number Constructor with Different Bases
+        let binaryNumber = parseInt("1010", 2); // Parses as binary, returns 10
+        let octalNumber = parseInt("12", 8); // Parses as octal, returns 10
+        let hexNumber = parseInt("A", 16); // Parses as hexadecimal, returns 10
+        console.log(binaryNumber, octalNumber, hexNumber);
 
-// Bitwise Operations
-let bitwiseAnd = 5 & 1; // Bitwise AND, returns 1
-let bitwiseOr = 5 | 1; // Bitwise OR, returns 5
-let bitwiseXor = 5 ^ 1; // Bitwise XOR, returns 4
-let bitwiseNot = ~5; // Bitwise NOT, returns -6
-console.log(bitwiseAnd, bitwiseOr, bitwiseXor, bitwiseNot);
+        // Bitwise Operations
+        let bitwiseAnd = 5 & 1; // Bitwise AND, returns 1
+        let bitwiseOr = 5 | 1; // Bitwise OR, returns 5
+        let bitwiseXor = 5 ^ 1; // Bitwise XOR, returns 4
+        let bitwiseNot = ~5; // Bitwise NOT, returns -6
+        console.log(bitwiseAnd, bitwiseOr, bitwiseXor, bitwiseNot);
 
-// Shifting bits
-let leftShift = 5 << 1; // Left shift, returns 10
-let rightShift = 5 >> 1; // Right shift, returns 2
-console.log(leftShift, rightShift);
+        // Shifting bits
+        let leftShift = 5 << 1; // Left shift, returns 10
+        let rightShift = 5 >> 1; // Right shift, returns 2
+        console.log(leftShift, rightShift);
 
-// string to number
-const str = "42"; // A sample string
-console.log("string", str); // Output: 42
-const num1 = Number(str); // Using Number() function
-console.log("Number:", num1); // Output: 42
-const num2 = parseInt(str, 10); // Using parseInt() for integer conversion
-console.log("Integer:", num2); // Output: 42
-const num3 = parseFloat(str); // Using parseFloat() for floating point numbers
-console.log("Float:", num3); // Output: 42
-const num4 = +str; // Using unary plus operator
-console.log("Unary Plus:", num4); // Output: 42
+        // string to number
+        const str = "42"; // A sample string
+        console.log("string", str); // Output: 42
+        const num1 = Number(str); // Using Number() function
+        console.log("Number:", num1); // Output: 42
+        const num2 = parseInt(str, 10); // Using parseInt() for integer conversion
+        console.log("Integer:", num2); // Output: 42
+        const num3 = parseFloat(str); // Using parseFloat() for floating point numbers
+        console.log("Float:", num3); // Output: 42
+        const num4 = +str; // Using unary plus operator
+        console.log("Unary Plus:", num4); // Output: 42
 
-// Safe Integers
-let largeNumber = 9007199254740991; // 2^53 - 1
-console.log(Number.isSafeInteger(largeNumber)); // true
+        // Safe Integers
+        let largeNumber = 9007199254740991; // 2^53 - 1
+        console.log(Number.isSafeInteger(largeNumber)); // true
 
-let unsafeNumber = largeNumber + 1;
-console.log(Number.isSafeInteger(unsafeNumber)); // false
+        let unsafeNumber = largeNumber + 1;
+        console.log(Number.isSafeInteger(unsafeNumber)); // false
 
     </script>
 </body>
+
 </html>
