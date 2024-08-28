@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sets</title>
+</head>
+
+<body>
+    <script>
+        // Create a new Set
+        const mySet = new Set();
+
+        // Add values to the Set
+        mySet.add(1);
+        mySet.add(5);
+        mySet.add(5); // Duplicate values are ignored
+        mySet.add('Hello');
+        mySet.add({ a: 1, b: 2 });
+        mySet.add(1); // Adding a duplicate number
+
+        // Log the Set
+        console.log(mySet);
+        // Output: Set(4) { 1, 5, 'Hello', { a: 1, b: 2 } }
+        // Note: The duplicate `1` and `5` are not added
+
+        console.log(new Set(["a", "b", "c"]));
+        // Output: Set(3) {'a', 'b', 'c'}
+
+        // Size of the Set
+        console.log(mySet.size);
+        // Output: 4
+
+        // Check if a value exists in the Set
+        console.log(mySet.has(1));
+        // Output: true
+        // The value `1` is in the Set
+
+        console.log(mySet.has(10));
+        // Output: false
+        // The value `10` is not in the Set
+
+        // Remove a value from the Set
+        mySet.delete(5);
+
+        // Log the Set after deletion
+        console.log(mySet);
+        // Output: Set(3) { 1, 'Hello', { a: 1, b: 2 } }
+        // The value `5` is removed from the Set
+
+        // loop 
+        const my_set = new Set(["a", "b", "c"])
+        for (const value of my_set) {
+            console.log(value);
+        }
+        /*
+            Output:
+            a
+            b
+            c
+        */
+
+        my_set.forEach(value => {
+            console.log(value);
+        })
+        /*
+            Output:
+            a
+            b
+            c
+        */
+
+        // Create a Set
+        const set = new Set([1, 2, 3, 4, 5]);
+
+        // Convert the Set to an Array using Array.from()
+        const myArrayFromSet = Array.from(set);
+        console.log('Array using Array.from():', myArrayFromSet);
+        // Output: [1, 2, 3, 4, 5]
+
+        // Convert the Set to an Array using the spread syntax
+        const myArraySpread = [...set];
+        console.log('Array using spread syntax:', myArraySpread);
+        // Output: [1, 2, 3, 4, 5]
+
+        // Create an Array
+        const array = [1, 2, 3, 4, 5, 5, 6];
+
+        // Convert the Array to a Set
+        const mySetFromArray = new Set(array);
+        console.log('Set from Array:', mySetFromArray);
+        // Output: Set(6) { 1, 2, 3, 4, 5, 6 }
+
+        // Clear all values from the Set
+        mySet.clear();
+        console.log(mySet);
+        // Output: Set(0) {}
+        // The Set is now empty
+
+        // Create a WeakSet
+        const weakSet = new WeakSet();
+
+        const obj1 = { a: 1 };
+        const obj2 = { b: 2 };
+
+        // Add objects to the WeakSet
+        weakSet.add(obj1);
+        weakSet.add(obj2);
+
+        // Log WeakSet operations
+        console.log(weakSet.has(obj1));
+        // Output: true
+        // The object `obj1` is in the WeakSet
+
+        weakSet.delete(obj1);
+        console.log(weakSet.has(obj1));
+        // Output: false
+        // The object `obj1` is removed from the WeakSet
+
+    </script>
+</body>
+
+</html>
