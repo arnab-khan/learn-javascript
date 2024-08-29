@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+
+<body>
+    <script>
+        // A class is declared using the 'class' keyword.
+        class Animal {
+            // Constructor is a special method for creating and initializing objects.
+            constructor(name, type) {
+                this.name = name; // Instance property 'name'
+                this.type = type; // Instance property 'type'
+            }
+
+            // Method in the class
+            speak() {
+                return `${this.name} makes a noise.`;
+            }
+        }
+
+        // Creating an instance of the Animal class
+        const dog = new Animal('Dog', 'Mammal');
+
+        // Logging the instance properties
+        console.log(dog.name); // Logs: Dog
+        console.log(dog.type); // Logs: Mammal
+
+        // Calling the method of the class
+        console.log(dog.speak()); // Logs: Dog makes a noise.
+
+        // Classes can also be defined using expressions.
+        const Car = class {
+            constructor(brand, model) {
+                this.brand = brand; // Instance property 'brand'
+                this.model = model; // Instance property 'model'
+            }
+
+            // Method in the class
+            details() {
+                return `${this.brand} ${this.model}`;
+            }
+        };
+
+        // Creating an instance of the Car class
+        const car1 = new Car('Toyota', 'Corolla');
+
+        // Logging the instance properties
+        console.log(car1.brand); // Logs: Toyota
+        console.log(car1.model); // Logs: Corolla
+
+        // Calling the method of the class
+        console.log(car1.details()); // Logs: Toyota Corolla
+
+        // Class inheritance is achieved using the 'extends' keyword.
+        class Bird {
+            constructor(name) {
+                this.name = name; // Instance property 'name'
+            }
+
+            // Method in the parent class
+            fly() {
+                return `${this.name} is flying.`;
+            }
+        }
+
+        // Parrot class inherits from Bird
+        class Parrot extends Bird {
+            constructor(name, color) {
+                // Calls the parent class constructor
+                super(name);
+                this.color = color; // Instance property 'color'
+            }
+
+            // Method in the child class
+            talk() {
+                return `${this.name} can talk.`;
+            }
+        }
+
+        // Creating an instance of the Parrot class
+        const parrot1 = new Parrot('Polly', 'Green');
+
+        // Logging the instance properties
+        console.log(parrot1.name); // Logs: Polly
+        console.log(parrot1.color); // Logs: Green
+
+        // Calling the methods from both parent and child classes
+        console.log(parrot1.fly()); // Logs: Polly is flying.
+        console.log(parrot1.talk()); // Logs: Polly can talk.
+
+        // Static methods belong to the class itself rather than instances of the class.
+        class MathUtils {
+            // Static method
+            static add(a, b) {
+                return a + b;
+            }
+        }
+
+        // Calling the static method directly on the class
+        console.log(MathUtils.add(5, 10)); // Logs: 15
+
+        // Attempting to call a static method on an instance will result in an error
+        // const utils = new MathUtils();
+        // console.log(utils.add(5, 10)); // Uncaught TypeError: utils.add is not a function
+
+        // Private fields are declared with a '#' prefix and are only accessible within the class.
+        class BankAccount {
+            // Private fields
+            #balance = 0;
+
+            // Constructor
+            constructor(accountNumber) {
+                this.accountNumber = accountNumber;
+            }
+
+            // Method to deposit money
+            deposit(amount) {
+                this.#balance += amount;
+            }
+
+            // Method to get the current balance
+            getBalance() {
+                return this.#balance;
+            }
+        }
+
+        // Creating an instance of the BankAccount class
+        const account = new BankAccount('123456789');
+
+        // Depositing money into the account
+        account.deposit(1000);
+
+        // Trying to access the private field directly will result in an error
+        // console.log(account.#balance); // Uncaught SyntaxError: Private field '#balance' must be declared in an enclosing class
+
+        // Accessing the balance using the method
+        console.log(account.getBalance()); // Logs: 1000
+
+        class Person {
+            // Private field
+            #name = '';
+
+            // Getter for the name property
+            get name() {
+                console.log('Getting name...');
+                return this.#name;
+            }
+
+            // Setter for the name property
+            set name(newName) {
+                console.log('Setting name...');
+                if (typeof newName === 'string' && newName.length > 0) {
+                    this.#name = newName;
+                } else {
+                    console.log('Invalid name');
+                }
+            }
+
+            // Constructor to initialize the name
+            constructor(name) {
+                this.name = name; // Calls the setter
+            }
+        }
+
+        const person = new Person('John Doe');
+
+        // Accessing the name using the getter
+        console.log(person.name); // Output: Getting name... / John Doe
+
+        // Setting a new name using the setter
+        person.name = 'Jane Smith'; // Output: Setting name...
+
+        // Accessing the updated name using the getter
+        console.log(person.name); // Output: Getting name... / Jane Smith
+
+        // Attempting to set an invalid name
+        person.name = ''; // Output: Setting name... / Invalid name
+
+        // The name remains unchanged due to the invalid input
+        console.log(person.name); // Output: Getting name... / Jane Smith
+
+        class Cars {
+            constructor(brand, model) {
+                this.brand = brand;
+                this.model = model;
+            }
+
+            // This method is added to Car.prototype
+            displayInfo() {
+                console.log(`This car is a ${this.brand} ${this.model}.`);
+            }
+        }
+
+        const myCar1 = new Cars('Toyota', 'Corolla');
+        const myCar2 = new Cars('Honda', 'Civic');
+
+        myCar1.displayInfo(); // Output: This car is a Toyota Corolla.
+        myCar2.displayInfo(); // Output: This car is a Honda Civic.
+
+        console.log(Cars.prototype); // Output: { constructor: f, displayInfo: f }
+
+
+    </script>
+</body>
+
+</html>
