@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+
+<body>
+    <script>
+        function fetchData(callback) {
+            // Simulate an asynchronous operation using setTimeout
+            setTimeout(() => {
+                const data = "Fetched data";
+                callback(data); // Call the callback function with the data
+            }, 1000);
+        }
+
+        // Callback function to handle the fetched data
+        function handleData(data) {
+            console.log("Data received:", data); // Data received: Fetched data
+        }
+
+        fetchData(handleData);
+
+
+        function fetchDataByPromise() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const success = true; // Simulate success or failure
+                    if (success) {
+                        resolve("Fetched data by promise"); // Resolve the promise with data
+                    } else {
+                        reject("Failed to fetch data"); // Reject the promise with an error message
+                    }
+                }, 3000);
+            });
+        }
+
+        fetchDataByPromise()
+            .then(data => {
+                console.log("Data received:", data); // Data received: Fetched data by promise
+            })
+            .catch(error => {
+                console.error("Error:", error); // Log the error if promise is rejected
+            });
+
+
+        async function fetchDataAsync() {
+            // Simulate fetching data asynchronously
+            const data1 = await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Fetched data 1");
+                }, 3000);
+            });
+            console.log("Data received:", data1); // Log the first received data
+
+            // Simulate another asynchronous operation
+            const data2 = await new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve("Fetched data 2");
+                }, 1500);
+            });
+            console.log("Data received:", data2); // Log the second received data
+        }
+
+        fetchDataAsync();
+        /*Output:
+            Data received: Fetched data 1
+            async.html:65 Data received: Fetched data 2
+        */
+
+
+        async function fetchAllData() {
+            const promise1 = new Promise((resolve) => setTimeout(() => resolve("Data 1"), 1000));
+            const promise2 = new Promise((resolve) => setTimeout(() => resolve("Data 2"), 2000));
+            const promise3 = new Promise((resolve) => setTimeout(() => resolve("Data 3"), 1500));
+
+            // Wait for all promises to resolve
+            const results = await Promise.all([promise1, promise2, promise3]);
+            console.log("All data received:", results); // All data received: (3) ['Data 1', 'Data 2', 'Data 3']
+        }
+        fetchAllData();
+
+
+        async function fetchRaceData() {
+            const promise1 = new Promise((resolve) => setTimeout(() => resolve("Data 1"), 1000));
+            const promise2 = new Promise((resolve) => setTimeout(() => resolve("Data 2"), 500));
+            const promise3 = new Promise((resolve) => setTimeout(() => resolve("Data 2"), 800));
+
+            // Wait for the first promise to resolve
+            const result = await Promise.race([promise1, promise2, promise3]);
+            console.log("First data received:", result); // First data received: Data 2
+        }
+        fetchRaceData();
+
+
+        async function fetchAllSettledData() {
+            const promise1 = new Promise((resolve) => setTimeout(() => resolve("Data 1"), 1000));
+            const promise2 = new Promise((_, reject) => setTimeout(() => reject("Error in Data 2"), 1500));
+            const promise3 = new Promise((resolve) => setTimeout(() => resolve("Data 3"), 500));
+
+            // Wait for all promises to settle
+            const results = await Promise.allSettled([promise1, promise2, promise3]);
+            console.log("All results:", results);
+            /*Output: All results: 
+            [
+                {
+                    "status": "fulfilled",
+                    "value": "Data 1"
+                },
+                {
+                    "status": "rejected",
+                    "reason": "Error in Data 2"
+                },
+                {
+                    "status": "fulfilled",
+                    "value": "Data 3"
+                }
+            ]
+            */
+        }
+        fetchAllSettledData();
+
+
+        async function fetchAnyData() {
+            const promise1 = new Promise((_, reject) => setTimeout(() => reject("Error in Data 1"), 1000));
+            const promise2 = new Promise((resolve) => setTimeout(() => resolve("Data 2"), 500));
+            const promise3 = new Promise((resolve) => setTimeout(() => resolve("Data 3"), 1500));
+            try {
+                // Wait for the first promise to resolve
+                const result = await Promise.any([promise1, promise2, promise3]);
+                console.log("First resolved data:", result); // First resolved data: Data 2
+            } catch (error) {
+                console.error("All promises rejected:", error.errors); // Log the errors if all promises reject
+            }
+        }
+        fetchAnyData();
+
+    </script>
+</body>
+
+</html>
