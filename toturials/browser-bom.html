@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser BOM</title>
+</head>
+
+<body>
+    <button onclick="clearTime()">Clear Time</button>
+    <script>
+        // Window
+        console.log(window.innerWidth); // Outputs the inner width of the browser window // 1920
+        console.log(window.innerHeight); // Outputs the inner height of the browser window // 358
+        console.log(window.location.href); // Outputs the current URL of the page //http://192.168.233.1:5500/toturials/browser-bom.html
+        console.log(window.location.hostname); // Outputs the domain name // 192.168.233.1
+        console.log(window.location.pathname); // Outputs the path of the URL // /toturials/browser-bom.html
+
+        // Screen
+        console.log(screen.width); // Outputs the width of the user's screen // 1920
+        console.log(screen.height); // Outputs the height of the user's screen // 1080
+        console.log(screen.availWidth); // Outputs the available width (excluding taskbars) // 1920
+        console.log(screen.availHeight); // Outputs the available height (excluding taskbars) // 1032
+
+        // History
+        console.log(history.length); // Outputs the number of URLs in the history stack
+        // Uncomment the next line to go back one page in history
+        // history.back(); 
+        // Uncomment the next line to go forward one page in history
+        // history.forward();
+
+        // Navigator
+        console.log(navigator.userAgent); // Outputs the user-agent string // Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36 Edg/128.0.0.0
+        console.log(navigator.language); // Outputs the language of the browser // en-US
+        console.log(navigator.onLine); // Outputs whether the browser is online or offline // true
+
+        // Timing
+        let timeoutId = setTimeout(() => {
+            console.log("This message is displayed after 2 seconds");
+        }, 2000);
+
+        let intervalId = setInterval(() => {
+            console.log("This message is displayed every 2 seconds");
+        }, 2000);
+
+        function clearTime() {
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
+        }
+
+        // Cookies
+        // Set the first cookie
+        document.cookie = "username1=First Cookies; expires=Fri, 31 Dec 2024 12:00:00 UTC; path=/";
+
+        // Set the second cookie with a different name
+        document.cookie = "username2=Second Cookies; expires=Fri, 31 Dec 2024 12:00:00 UTC; path=/";
+
+        // Check cookies
+        console.log(document.cookie); // username=Second Cookies; username1=First Cookies; username2=Second Cookies
+
+        // Reading a specific cookie
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            for (let cookie of cookieArr) {
+                let [key, value] = cookie.trim().split("=");
+                if (key === name) {
+                    return value;
+                }
+            }
+            return null;
+        }
+        console.log(getCookie("username1")); // First Cookies
+        console.log(getCookie("username2")); // Second Cookies
+    </script>
+</body>
+
+</html>

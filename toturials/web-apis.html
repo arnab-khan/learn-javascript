@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web APIs</title>
+</head>
+
+<body>
+    <form id="myForm" onsubmit="handleSubmit(event)">
+        <input type="text" name="username" required>
+        <input type="email" name="email">
+        <input type="password" name="password">
+        <button type="submit">Submit</button>
+    </form>
+
+    <button onclick="goToNewUrl()">Go to new URL</button>
+
+    <script>
+        // Forms api
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = document.forms['myForm'];
+            const username = form.elements['username'];
+            const email = form.elements['email'];
+            const password = form.elements['password'];
+
+            // Accessing Form Elements
+            console.log(username.value); // username input value
+            console.log(email.value); // email input value
+            console.log(password.value); // password input value
+
+            // Validating Form Input
+            const isValidUsername = username.validity.valid;
+            console.log(isValidUsername); // If the input is valid, false otherwise
+            const isValidEmail = email.validity.valid;
+            console.log(isValidEmail); // If the input is valid, false otherwise
+        }
+
+        // History API
+        console.log(window.location.href); // http://192.168.233.1:5500/toturials/web-apis.html
+        function goToNewUrl() {
+            history.pushState(null, null, "/new-url");
+            console.log(window.location.href); // http://192.168.233.1:5500/new-url
+        }
+
+        // Storage API
+// LocalStorage
+// Adding multiple items to localStorage
+localStorage.setItem("username", "JohnDoe");
+localStorage.setItem("email", "john.doe@example.com");
+localStorage.setItem("age", "30");
+
+// Retrieving and logging multiple items
+console.log(localStorage.getItem("username")); // Outputs: "JohnDoe"
+console.log(localStorage.getItem("email"));    // Outputs: "john.doe@example.com"
+console.log(localStorage.getItem("age"));      // Outputs: "30"
+
+// Removing a specific item from localStorage
+localStorage.removeItem("email");
+console.log(localStorage.getItem("email"));    // Outputs: null
+
+// Clearing all items from localStorage
+localStorage.clear();
+console.log(localStorage.getItem("username")); // Outputs: null
+console.log(localStorage.getItem("age"));      // Outputs: null
+
+// SessionStorage
+// Adding multiple items to sessionStorage
+sessionStorage.setItem("sessionKey1", "value1");
+sessionStorage.setItem("sessionKey2", "value2");
+sessionStorage.setItem("sessionKey3", "value3");
+
+// Retrieving and logging multiple items
+console.log(sessionStorage.getItem("sessionKey1")); // Outputs: "value1"
+console.log(sessionStorage.getItem("sessionKey2")); // Outputs: "value2"
+console.log(sessionStorage.getItem("sessionKey3")); // Outputs: "value3"
+
+// Removing a specific item from sessionStorage
+sessionStorage.removeItem("sessionKey2");
+console.log(sessionStorage.getItem("sessionKey2")); // Outputs: null
+
+// Clearing all items from sessionStorage
+sessionStorage.clear();
+console.log(sessionStorage.getItem("sessionKey1")); // Outputs: null
+console.log(sessionStorage.getItem("sessionKey3")); // Outputs: null
+
+// Web Worker
+// Creating and using a Web Worker
+let worker = new Worker("../js/assets/javascript/worker.js"); // '../js/assets/javascript/worker.js' is the path for new created worker file
+
+// Sending a message to the worker
+worker.postMessage("Hello, worker!");
+
+// Listening for messages from the worker
+worker.onmessage = (event) => {
+    console.log("Message from worker:", event.data); // Outputs the message received from the worker // Message from worker: Worker received: Hello, worker!
+};
+
+// Fetch API
+// Using the Fetch API to get data from an API
+fetch("https://freetestapi.com/api/v1/animals")
+    .then(response => response.json()) // Always returns a Promise and Parse the response as JSON
+    .then(data => {
+        console.log("Data received:", data); // Outputs the parsed JSON data
+    })
+    .catch(error => console.error("Fetch error:", error)) // Handles any errors
+    .finally(() => {
+        // This runs regardless of success or failure
+        console.log("Fetch operation complete.");
+    });
+
+// Geolocation API
+// Example: Using the Geolocation API to get the user's current position
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log("Latitude:", position.coords.latitude); // Outputs the latitude
+            console.log("Longitude:", position.coords.longitude); // Outputs the longitude
+        },
+        (error) => {
+            console.error("Geolocation error:", error); // Outputs an error if geolocation fails.
+        }
+    );
+} else {
+    console.log("Geolocation is not supported by this browser."); // Outputs if geolocation is not supported
+}
+
+    </script>
+</body>
+
+</html>
