@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+</head>
+
+<body>
+    <script>
+
+        // ==================== Map ====================
+
+        // Creating a Map
+
+        const myMap = new Map();
+
+        // Add key-value pairs to the Map
+        myMap.set('name', 'String key');  // string key
+        myMap.set(1, 'Number key');   // number key
+        myMap.set(true, 'Boolean key');   // boolean key
+        myMap.set({ a: 1 }, 'Object Key');  // object key
+
+        // Log the entire Map
+        console.log(myMap);
+        // Output: Map(4) {'name' => 'String key', 1 => 'Number key', true => 'Boolean key', {a: 1} => 'Object Key'}
+        // Map holds unique key-value pairs of various data types
+
+
+        // Get values from the Map
+        console.log(myMap.get('name'));
+        // Output: String key
+
+        console.log(myMap.get(1));
+        // Output: Number key
+
+        console.log(myMap.get({ a: 1 }));
+        // Output: undefined
+        // Object keys are compared by reference, so this returns undefined
+
+        const objKey = { a: 1 };
+        myMap.set(objKey, 'New Object Key');
+        console.log(myMap.get(objKey));
+        // Output: New Object Key
+        // Using the exact object reference allows access to the value // New Object Key
+        console.log(myMap.get({ a: 1 })); // undefined
+
+
+        // Check if a key exists in the Map
+        console.log(myMap.has('name'));
+        // Output: true
+
+        console.log(myMap.has('nonExistentKey'));
+        // Output: false
+
+        // Remove a key-value pair from the Map
+        myMap.delete('name');
+
+        // Check if the key 1 is still in the Map
+        console.log(myMap.has('name'));
+        // Output: false
+        // The key-value pair for `1` has been removed
+
+
+        // Get the number of key-value pairs in the Map
+        console.log(myMap.size);
+        // Output: 4
+        // The Map has 4 key-value pairs remaining
+
+
+        // Create a Map from an array
+        const arrayToMap = new Map([['a', 1], ['b', 2], ['c', 3]]);
+        console.log(arrayToMap);
+        // Output: Map(3) {'a' => 1, 'b' => 2, 'c' => 3}
+
+        // Convert Map to Array of [key, value] pairs
+        const mapArray = Array.from(arrayToMap);
+        console.log(mapArray);
+        // Output: [ ['name', 'Alice'], [true, 'Boolean'], [{ a: 1 }, 'New Object Key'] ]
+
+        // Convert Map to an object
+        const mapObject = Object.fromEntries(arrayToMap);
+        console.log(mapObject);
+        // Output: {a: 1, b: 2, c: 3}
+
+
+
+        const myMapForLoop = new Map([
+            ['key1', 'value1'],
+            ['key2', 'value2'],
+            ['key3', 'value3']
+        ]);
+
+        // Iterate over Map entries using for...of
+        for (let [key, value] of myMapForLoop) {
+            console.log(`${key} => ${value}`);
+        }
+        /* Output: 
+            key1 => value1
+            maps.html:74 key2 => value2
+            maps.html:74 key3 => value3
+        */
+
+        // Using forEach to iterate
+        myMapForLoop.forEach((value, key) => {
+            console.log(`${key} => ${value}`);
+        });
+        /* Output: 
+           key1 => value1
+            maps.html:83 key2 => value2
+            maps.html:83 key3 => value3
+        */
+
+
+        // Remove all key-value pairs from the Map
+        myMap.clear();
+
+        // Check the size after clearing
+        console.log(myMap);
+        // Output: Map(0) {size: 0}
+        // The Map is now empty
+
+
+        const map1 = new Map([['a', 1], ['b', 2]]);
+        const map2 = new Map([['b', 3], ['c', 4]]);
+
+        // Merge maps (map2 overwrites map1 for key 'b')
+        const mergedMap = new Map([...map1, ...map2]);
+
+        console.log(mergedMap);
+        // Output: Map(3) { 'a' => 1, 'b' => 3, 'c' => 4 }
+        // The key 'b' is overwritten by map2's value
+
+
+        const myMapForOperation = new Map([
+            ['a', 1],
+            ['b', 2],
+            ['c', 3]
+        ]);
+
+        // Get keys from the Map
+        const keysArray = Array.from(myMapForOperation.entries());
+
+        console.log(keysArray);
+        /* Output:
+            [
+                [ "a", 1 ],
+                [ "b", 2 ],
+                [ "c", 3 ]
+            ]
+        */
+
+
+
+        // ==================== WeakMap ====================
+
+        // Create a new WeakMap
+        const weakMap = new WeakMap();
+
+        // Create objects to use as keys
+        const obj1 = { name: "Alice" };
+        const obj2 = { name: "Bob" };
+
+        // Add key-value pairs to the WeakMap
+        weakMap.set(obj1, "Developer");
+        weakMap.set(obj2, "Designer");
+
+        console.log(weakMap); // WeakMap {{ name: "Alice" } => 'Developer', { name: "Bob" } => 'Designer'}
+
+
+        // Log values from the WeakMap
+        console.log(weakMap.get(obj1));
+        // Output: Developer
+        // obj1 is used as the key, and "Developer" is the value
+
+        console.log(weakMap.get(obj2));
+        // Output: Designer
+        // obj2 is the key, and "Designer" is the value
+
+
+        // Check if a key exists in the WeakMap
+        console.log(weakMap.has(obj1));
+        // Output: true
+        // The key obj1 exists in the WeakMap
+
+        console.log(weakMap.has({ name: "Unknown" }));
+        // Output: false
+        // A different object is not in the WeakMap
+
+
+        // Remove a key-value pair from the WeakMap
+        weakMap.delete(obj2);
+
+        // Check if obj2 is still in the WeakMap
+        console.log(weakMap.has(obj2));
+        // Output: false
+        // obj2 has been removed from the WeakMap
+
+
+        // Create a new WeakMap with some keys
+        const wm = new WeakMap();
+        const key1 = {};
+        const key2 = {};
+
+        wm.set(key1, "Value 1");
+        wm.set(key2, "Value 2");
+
+        console.log(wm.size);
+        // Output: undefined
+        // WeakMap does not have a size property
+
+        // Iterating over WeakMap is not possible
+        // No forEach, no keys(), no values(), no entries()
+
+
+        // Create a WeakMap
+        const weakMapGC = new WeakMap();
+        let objGC = { id: 1 };
+
+        // Set objGC as a key in the WeakMap
+        weakMapGC.set(objGC, "Data");
+
+        // objGC is still referenced, so it's not garbage collected
+        console.log(weakMapGC.get(objGC));
+        // Output: Data
+
+        // Remove reference to objGC
+        objGC = null;
+
+        // objGC can now be garbage collected, 
+        // and the entry in WeakMap may no longer exist in memory
+
+    </script>
+</body>
+
+</html>
