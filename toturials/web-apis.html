@@ -46,86 +46,231 @@
         }
 
         // Storage API
-// LocalStorage
-// Adding multiple items to localStorage
-localStorage.setItem("username", "JohnDoe");
-localStorage.setItem("email", "john.doe@example.com");
-localStorage.setItem("age", "30");
+        // LocalStorage
+        // Adding multiple items to localStorage
+        localStorage.setItem("username", "JohnDoe");
+        localStorage.setItem("email", "john.doe@example.com");
+        localStorage.setItem("age", "30");
 
-// Retrieving and logging multiple items
-console.log(localStorage.getItem("username")); // Outputs: "JohnDoe"
-console.log(localStorage.getItem("email"));    // Outputs: "john.doe@example.com"
-console.log(localStorage.getItem("age"));      // Outputs: "30"
+        // Retrieving and logging multiple items
+        console.log(localStorage.getItem("username")); // Outputs: "JohnDoe"
+        console.log(localStorage.getItem("email"));    // Outputs: "john.doe@example.com"
+        console.log(localStorage.getItem("age"));      // Outputs: "30"
 
-// Removing a specific item from localStorage
-localStorage.removeItem("email");
-console.log(localStorage.getItem("email"));    // Outputs: null
+        // Removing a specific item from localStorage
+        localStorage.removeItem("email");
+        console.log(localStorage.getItem("email"));    // Outputs: null
 
-// Clearing all items from localStorage
-localStorage.clear();
-console.log(localStorage.getItem("username")); // Outputs: null
-console.log(localStorage.getItem("age"));      // Outputs: null
+        // Clearing all items from localStorage
+        localStorage.clear();
+        console.log(localStorage.getItem("username")); // Outputs: null
+        console.log(localStorage.getItem("age"));      // Outputs: null
 
-// SessionStorage
-// Adding multiple items to sessionStorage
-sessionStorage.setItem("sessionKey1", "value1");
-sessionStorage.setItem("sessionKey2", "value2");
-sessionStorage.setItem("sessionKey3", "value3");
+        // SessionStorage
+        // Adding multiple items to sessionStorage
+        sessionStorage.setItem("sessionKey1", "value1");
+        sessionStorage.setItem("sessionKey2", "value2");
+        sessionStorage.setItem("sessionKey3", "value3");
 
-// Retrieving and logging multiple items
-console.log(sessionStorage.getItem("sessionKey1")); // Outputs: "value1"
-console.log(sessionStorage.getItem("sessionKey2")); // Outputs: "value2"
-console.log(sessionStorage.getItem("sessionKey3")); // Outputs: "value3"
+        // Retrieving and logging multiple items
+        console.log(sessionStorage.getItem("sessionKey1")); // Outputs: "value1"
+        console.log(sessionStorage.getItem("sessionKey2")); // Outputs: "value2"
+        console.log(sessionStorage.getItem("sessionKey3")); // Outputs: "value3"
 
-// Removing a specific item from sessionStorage
-sessionStorage.removeItem("sessionKey2");
-console.log(sessionStorage.getItem("sessionKey2")); // Outputs: null
+        // Removing a specific item from sessionStorage
+        sessionStorage.removeItem("sessionKey2");
+        console.log(sessionStorage.getItem("sessionKey2")); // Outputs: null
 
-// Clearing all items from sessionStorage
-sessionStorage.clear();
-console.log(sessionStorage.getItem("sessionKey1")); // Outputs: null
-console.log(sessionStorage.getItem("sessionKey3")); // Outputs: null
+        // Clearing all items from sessionStorage
+        sessionStorage.clear();
+        console.log(sessionStorage.getItem("sessionKey1")); // Outputs: null
+        console.log(sessionStorage.getItem("sessionKey3")); // Outputs: null
 
-// Web Worker
-// Creating and using a Web Worker
-let worker = new Worker("../js/assets/javascript/worker.js"); // '../js/assets/javascript/worker.js' is the path for new created worker file
+        // Web Worker
+        // Creating and using a Web Worker
+        let worker = new Worker("../js/assets/javascript/worker.js"); // '../js/assets/javascript/worker.js' is the path for new created worker file
 
-// Sending a message to the worker
-worker.postMessage("Hello, worker!");
+        // Sending a message to the worker
+        worker.postMessage("Hello, worker!");
 
-// Listening for messages from the worker
-worker.onmessage = (event) => {
-    console.log("Message from worker:", event.data); // Outputs the message received from the worker // Message from worker: Worker received: Hello, worker!
-};
+        // Listening for messages from the worker
+        worker.onmessage = (event) => {
+            console.log("Message from worker:", event.data); // Outputs the message received from the worker // Message from worker: Worker received: Hello, worker!
+        };
 
-// Fetch API
-// Using the Fetch API to get data from an API
-fetch("https://freetestapi.com/api/v1/animals")
-    .then(response => response.json()) // Always returns a Promise and Parse the response as JSON
-    .then(data => {
-        console.log("Data received:", data); // Outputs the parsed JSON data
-    })
-    .catch(error => console.error("Fetch error:", error)) // Handles any errors
-    .finally(() => {
-        // This runs regardless of success or failure
-        console.log("Fetch operation complete.");
-    });
+        // Fetch API
+        // Using the Fetch API to get data from an API
+        fetch("https://freetestapi.com/api/v1/animals")
+            .then(response => response.json()) // Always returns a Promise and Parse the response as JSON
+            .then(data => {
+                console.log("Data received:", data); // Outputs the parsed JSON data
+            })
+            .catch(error => console.error("Fetch error:", error)) // Handles any errors
+            .finally(() => {
+                // This runs regardless of success or failure
+                console.log("Fetch operation complete.");
+            });
 
-// Geolocation API
-// Example: Using the Geolocation API to get the user's current position
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            console.log("Latitude:", position.coords.latitude); // Outputs the latitude
-            console.log("Longitude:", position.coords.longitude); // Outputs the longitude
-        },
-        (error) => {
-            console.error("Geolocation error:", error); // Outputs an error if geolocation fails.
+        // URL for the GET request
+        const getApiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+        // GET Method: Retrieve data from the server
+        fetch(getApiUrl)
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                console.log('GET response:', data); // Log the response data (retrieved posts)
+            })
+            .catch(error => {
+                console.log('GET Error:', error); // Log any error during the GET request
+            });
+
+
+        // URL for the POST request
+        const postApiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
+        // Data to send in the POST request
+        const postData = {
+            title: 'New Post',
+            body: 'This is the content of the new post.',
+            userId: 1
+        };
+
+        // POST Method: Send data to create a new resource on the server
+        fetch(postApiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                console.log('POST response:', data); // Log the response data (created post)
+            })
+            .catch(error => {
+                console.log('POST Error:', error); // Log any error during the POST request
+            });
+
+
+        // URL for the PATCH request
+        const patchApiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Example to partially update post with ID 1
+
+        // Data to send in the PATCH request
+        const patchData = {
+            title: 'Partially Updated Post Title' // Only updating the title
+        };
+
+        // PATCH Method: Partial update of an existing resource
+        fetch(patchApiUrl, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(patchData)
+        })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                console.log('PATCH response:', data); // Log the response data (partially updated post)
+            })
+            .catch(error => {
+                console.log('PATCH Error:', error); // Log any error during the PATCH request
+            });
+
+
+        // URL for the PUT request
+        const putApiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Example to update post with ID 1
+
+        // Data to send in the PUT request
+        const putData = {
+            id: 1,
+            title: 'Updated Post Title',
+            body: 'This is the updated content of the post.',
+            userId: 1
+        };
+
+        // PUT Method: Send data to update an existing resource on the server
+        fetch(putApiUrl, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(putData)
+        })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+                console.log('PUT response:', data); // Log the response data (updated post)
+            })
+            .catch(error => {
+                console.log('PUT Error:', error); // Log any error during the PUT request
+            });
+
+
+        // URL for the DELETE request
+        const deleteApiUrl = 'https://jsonplaceholder.typicode.com/posts/1'; // Example to delete post with ID 1
+
+        // DELETE Method: Delete a resource from the server
+        fetch(deleteApiUrl, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('DELETE response: Resource deleted successfully'); // Log successful deletion
+                } else {
+                    console.log('DELETE response: Failed to delete the resource');
+                }
+            })
+            .catch(error => {
+                console.log('DELETE Error:', error); // Log any error during the DELETE request
+            });
+
+
+        // URL for the HEAD request
+        const headApiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+        // HEAD Method: Retrieve only headers from the server
+        fetch(headApiUrl, {
+            method: 'HEAD'
+        })
+            .then(response => {
+                console.log('HEAD response status:', response.status); // Log the status of the request
+                console.log('HEAD headers:', response.headers); // Log the headers received
+            })
+            .catch(error => {
+                console.log('HEAD Error:', error); // Log any error during the HEAD request
+            });
+
+
+        // URL for the OPTIONS request
+        const optionsApiUrl = 'https://jsonplaceholder.typicode.com/posts/1';
+
+        // OPTIONS Method: Check which methods are supported by the server for this URL
+        fetch(optionsApiUrl, {
+            method: 'OPTIONS'
+        })
+            .then(response => {
+                console.log('OPTIONS response status:', response.status); // Log the status of the request
+                console.log('OPTIONS headers:', response.headers); // Log the headers received
+            })
+            .catch(error => {
+                console.log('OPTIONS Error:', error); // Log any error during the OPTIONS request
+            });
+
+
+        // Geolocation API
+        // Example: Using the Geolocation API to get the user's current position
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log("Latitude:", position.coords.latitude); // Outputs the latitude
+                    console.log("Longitude:", position.coords.longitude); // Outputs the longitude
+                },
+                (error) => {
+                    console.error("Geolocation error:", error); // Outputs an error if geolocation fails.
+                }
+            );
+        } else {
+            console.log("Geolocation is not supported by this browser."); // Outputs if geolocation is not supported
         }
-    );
-} else {
-    console.log("Geolocation is not supported by this browser."); // Outputs if geolocation is not supported
-}
 
     </script>
 </body>

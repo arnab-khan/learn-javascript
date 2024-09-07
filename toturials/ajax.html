@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <script>
+        // Basic GET Request
+
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // Configure it: GET-request for a URL
+        xhr.open('GET', 'https://freetestapi.com/api/v1/animals', true);
+
+        // Event listener for when the request is completed
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Log the response from the server
+                console.log('Success:', JSON.parse(xhr.responseText)); // API response
+            } else {
+                console.log('Error:', xhr.status); // Logs the error code if request fails
+            }
+        };
+
+        // Event listener for network errors
+        xhr.onerror = function () {
+            console.log('Request failed'); // Logs if there is a network error
+        };
+
+        // Send the request
+        xhr.send();
+
+
+        // POST Request with Data
+
+        // Create a new XMLHttpRequest object
+        const xhrPost = new XMLHttpRequest();
+
+        // Configure it: POST-request for a URL
+        xhrPost.open('POST', 'https://jsonplaceholder.typicode.com/posts', true);
+
+        // Set the request headers to inform the server about the data type
+        xhrPost.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        // Event listener for response
+        xhrPost.onload = function () {
+            if (xhrPost.status === 201) {
+                console.log('Post created:', JSON.parse(xhrPost.responseText)); // API preview response
+            } else {
+                console.log('Error:', xhrPost.status); // Logs the error status
+            }
+        };
+
+        // Data to send with the POST request
+        const newPostData = JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        });
+
+        // Send the request with the data
+        xhrPost.send(newPostData);
+
+
+        // patch
+
+        // Create a new XMLHttpRequest object
+        const xhrPatch = new XMLHttpRequest();
+
+        // Open a PATCH request to the specified URL
+        xhrPatch.open('PATCH', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+        // Set request header to indicate JSON content type
+        xhrPatch.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        // Set up the onload event to process the response
+        xhrPatch.onload = function () {
+            if (xhrPatch.status === 200) {
+                console.log('Resource updated:', JSON.parse(xhrPatch.responseText)); // API preview response
+            } else {
+                console.log('Error:', xhrPatch.status); // Logs any error status
+            }
+        };
+
+        // Data to send in the request body (partial update)
+        const patchData = JSON.stringify({
+            title: 'Updated title'
+        });
+
+        // Send the PATCH request with data
+        xhrPatch.send(patchData);
+
+
+        // put
+
+        // Create a new XMLHttpRequest object
+        const xhrPut = new XMLHttpRequest();
+
+        // Open a PUT request to replace the resource
+        xhrPut.open('PUT', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+        // Set request header to indicate JSON content type
+        xhrPut.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+
+        // Set up the onload event to process the response
+        xhrPut.onload = function () {
+            if (xhrPut.status === 200) {
+                console.log('Resource replaced:', JSON.parse(xhrPut.responseText)); // API preview response
+            } else {
+                console.log('Error:', xhrPut.status); // Logs any error status
+            }
+        };
+
+        // Data to send in the request body (entire resource replacement)
+        const putData = JSON.stringify({
+            id: 1,
+            title: 'Replaced title',
+            body: 'Replaced body',
+            userId: 1
+        });
+
+        // Send the PUT request with data
+        xhrPut.send(putData);
+
+
+
+        // delete
+
+        // Create a new XMLHttpRequest object
+        const xhrDelete = new XMLHttpRequest();
+
+        // Open a DELETE request to the specified URL
+        xhrDelete.open('DELETE', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+        // Set up the onload event to process the response
+        xhrDelete.onload = function () {
+            if (xhrDelete.status === 200) {
+                console.log('Resource deleted successfully'); // Logs success message
+            } else {
+                console.log('Error:', xhrDelete.status); // Logs any error status
+            }
+        };
+
+        // Send the DELETE request
+        xhrDelete.send();
+
+
+        // ReadyState
+        // Create a new XMLHttpRequest object
+        const xhrForReadyState = new XMLHttpRequest();
+
+        // Open a GET request to a URL
+        xhrForReadyState.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+
+        // Monitor the readyState changes
+        xhrForReadyState.onreadystatechange = function () {
+            console.log('readyState:', xhrForReadyState.readyState); // Log the current readyState
+
+            if (xhrForReadyState.readyState === 4 && xhrForReadyState.status === 200) {
+                // The request is complete, and the response is received
+                console.log('Response:', xhrForReadyState.responseText); // Log the response
+            }
+        };
+
+        // Send the request
+        xhrForReadyState.send();
+
+        /*
+        Possible output:
+        readyState: 1  // OPENED
+        readyState: 2  // HEADERS_RECEIVED
+        readyState: 3  // LOADING
+        readyState: 4  // DONE (Response received)
+        Response: [the data returned from the server]
+        */
+
+
+
+        // Status
+
+        const xhrStatus = new XMLHttpRequest();
+
+        // Open the request
+        xhrStatus.open('GET', 'https://jsonplaceholder.typicode.com/posts', true);
+
+        // Listen for changes in the request's state
+        xhrStatus.onreadystatechange = function () {
+            if (xhrStatus.readyState === 4) { // Request is complete
+                if (xhrStatus.status === 200) {
+                    console.log('Success:', JSON.parse(xhrStatus.responseText)); // Log success
+                } else if (xhrStatus.status === 404) {
+                    console.log('Error 404: Not Found'); // Log 404 error
+                } else if (xhrStatus.status === 500) {
+                    console.log('Error 500: Internal Server Error'); // Log server error
+                } else {
+                    console.log('Unexpected status:', xhrStatus.status); // Log any other status
+                }
+            }
+        };
+
+        // Send the request
+        xhrStatus.send();
+
+    </script>
+</body>
+
+</html>
